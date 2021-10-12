@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        titleText.DOText(text, 3f);
+        titleText.DOText(text, 2f);
     }
 
     void Update()
