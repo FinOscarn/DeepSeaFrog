@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: effect
+    uniqueID: 1664226359
+    locked: 0
+  - name: food
+    uniqueID: 2620706245
+    locked: 0
+  - name: player
+    uniqueID: 2394005767
+    locked: 0
