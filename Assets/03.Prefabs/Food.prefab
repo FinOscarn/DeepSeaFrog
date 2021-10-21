@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5479054591652175917}
   - component: {fileID: 5479054591652175914}
   - component: {fileID: 5479054591652175916}
+  - component: {fileID: 2397338222013307337}
   m_Layer: 0
   m_Name: Food
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5479054591652175915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.154, y: 0.154, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -70,10 +71,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1674261051
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.443995, a: 1}
+  m_Sprite: {fileID: 6902288473526752927, guid: 08c52bbed93bd9a4a9e2e52e5cfdb836, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,5 +96,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462d8232b067e754bb0b1100fe3bb5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 3457956322265641009, guid: 08c52bbed93bd9a4a9e2e52e5cfdb836, type: 3}
+  - {fileID: 6902288473526752927, guid: 08c52bbed93bd9a4a9e2e52e5cfdb836, type: 3}
+  player: {fileID: 0}
   isCling: 0
-  downSpeed: 1.5
+  orginSpeed: 7
+  clingSpeed: 0
+--- !u!58 &2397338222013307337
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5479054591652175915}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
