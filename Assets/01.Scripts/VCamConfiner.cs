@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class VCamConfiner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Transform playerTrm;
+
     void Start()
     {
-        
+        playerTrm = GameManager.instance.player.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.position = new Vector2(0, playerTrm.position.y);
     }
 }
