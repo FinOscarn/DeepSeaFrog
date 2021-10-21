@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background
+    uniqueID: 2502867537
+    locked: 0
   - name: effect
     uniqueID: 1664226359
     locked: 0
@@ -49,4 +52,7 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 2394005767
+    locked: 0
+  - name: UI
+    uniqueID: 3077746087
     locked: 0
