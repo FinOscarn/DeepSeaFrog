@@ -57,7 +57,21 @@ public class UIManager : MonoBehaviour
     // Stop 패널의 title 버튼을 누르면 타이틀 패널로 전환되는 함수
     public void GoTitle()
     {
+        // stop 패널 비활성화
+        stopPanel.alpha = 0;
+        stopPanel.interactable = false;
+        stopPanel.blocksRaycasts = false;
 
+        // inGame 패널 비활성화
+        inGame.interactable = false;
+        inGame.blocksRaycasts = false;
+        StartCoroutine(CheckTime(inGame));
+
+        // title 패널 활성화
+        title.alpha = 1;
+        title.blocksRaycasts = true;
+        title.interactable = true;
+        scoreText.gameObject.SetActive(false);
     }
 
     // 클릭시 사운드 아이콘과 사운드 재생을 해주는 함수 Clear
@@ -65,13 +79,14 @@ public class UIManager : MonoBehaviour
     {
         if (!change)
         {
-            //audioSource.Stop();
+            audioSource.Stop();
             soundMute.sprite = muteIcon;
             change = true;
+            audioSource.Stop();
         }
         else if (change)
         {
-            //audioSource.Play();
+            audioSource.Play();
             soundMute.sprite = onIcon;
             change = false;
         }
@@ -88,8 +103,9 @@ public class UIManager : MonoBehaviour
         StartCoroutine(CheckTime(title));
 
 
+
         // 플레이어 생성
-        //audioSource.Play();
+        audioSource.Play();
         scoreText.gameObject.SetActive(true); // 점수 구현
         
         // 먹이 구현
