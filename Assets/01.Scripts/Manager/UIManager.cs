@@ -12,8 +12,11 @@ public class UIManager : MonoBehaviour
     public CanvasGroup gameOver;
     public CanvasGroup stopPanel;
 
+    public CanvasGroup exitButton;
+
     public Text titleText;
     public Text scoreText;
+    public Text touchToStartText;
 
     public AudioSource audioSource;
     private Camera cam;
@@ -32,9 +35,10 @@ public class UIManager : MonoBehaviour
     {
         cam = Camera.main;
         audioSource = gameObject.GetComponent<AudioSource>();
-
         titleText.DOText(text, 2f);
+        StartCoroutine(ShowReady());
     }
+
 
     void Update()
     {
@@ -52,6 +56,15 @@ public class UIManager : MonoBehaviour
         stopPanel.alpha = 1;
         stopPanel.interactable = true;
         stopPanel.blocksRaycasts = true;
+        exitButton.alpha = 0;
+        
+    }
+    public void ResumeGame()
+    {
+        stopPanel.alpha = 0;
+        stopPanel.interactable = false;
+        stopPanel.blocksRaycasts = false;
+        exitButton.alpha = 1;
     }
 
     // Stop 패널의 title 버튼을 누르면 타이틀 패널로 전환되는 함수
@@ -63,9 +76,9 @@ public class UIManager : MonoBehaviour
         stopPanel.blocksRaycasts = false;
 
         // inGame 패널 비활성화
-        inGame.interactable = false;
-        inGame.blocksRaycasts = false;
-        StartCoroutine(CheckTime(inGame));
+        //inGame.interactable = false;
+        //inGame.blocksRaycasts = false;
+        //StartCoroutine(CheckTime(inGame));
 
         // title 패널 활성화
         title.alpha = 1;
@@ -147,5 +160,20 @@ public class UIManager : MonoBehaviour
             cGroup.alpha -= 0.07f;
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    IEnumerator ShowReady()
+    {
+        yield return new WaitForSeconds(2.5f);                              
+        int count = 0;
+        while (count < 3)
+        {
+            touchToStartText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            touchToStartText.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+            count++;
+        }
+        touchToStartText.gameObject.SetActive(true);
     }
 }
