@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Player player;
 
     public bool isGameOver = false;
+    public Action startGame = () => { };
 
     private void Awake()
     {

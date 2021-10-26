@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool isGameStarted = false;
+    
     public bool isCling = false; //먹이에 붙어있는지
     public bool canMove = true; //좌우로 이동할 수 있는지
 
     public float upSpeed = 1f; //위로 이동하는 속도
     public float downSpeed = 1f; //아래로 떨어지는 속도
     public float moveSpeed = 1f; //좌우로 이동하는 속도
+
+    public float clingTimer;
+    public float maxTime = 3f;
 
     public Food food = null; //현재 붙어있는 먹이
     public Action<Food> onCling = food => { }; //먹이에 붙었을 때
@@ -19,6 +24,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.startGame += () =>
+        {
+            isGameStarted = true;
+        };
+
         InputManager.instance.onClick += () =>
         {
             moveDir = InputManager.GetDir();
@@ -39,6 +49,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (!isGameStarted) return;
+
         if(canMove)
         {
             if (moveDir == MoveDir.Left)
@@ -58,6 +70,14 @@ public class Player : MonoBehaviour
         else
         {
             transform.Translate(Vector2.down * downSpeed * Time.deltaTime);
+
+            clingTimer += Time.deltaTime;
+        }
+
+        if(clingTimer >= maxTime)
+        {
+
+            clingTimer = 0;
         }
     }
 

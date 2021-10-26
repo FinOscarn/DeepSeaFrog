@@ -36,12 +36,30 @@ public class Food : MonoBehaviour
         {
             transform.Translate(Vector2.down * orginSpeed * Time.deltaTime);
         }
+
+        if(player.transform.position.y - transform.position.y > 10)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void Init(Vector3 pos)
     {
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         transform.position = pos;
+    }
+
+    public void Disable()
+    {
+        if(player.food == this)
+        {
+            player.isCling = false;
+            isCling = false;
+        }
+
+        player.food = null;
+
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D col)

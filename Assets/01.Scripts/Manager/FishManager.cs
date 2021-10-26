@@ -25,7 +25,15 @@ public class FishManager : MonoBehaviour
     {
         player = GameManager.instance.player.transform;
 
-        StartCoroutine(CreateFish());
+        GameManager.instance.startGame += () =>
+        {
+            StartCoroutine(CreateFish());
+        };
+    }
+
+    public void CallFish(Food food)
+    {
+
     }
 
     private IEnumerator CreateFish()

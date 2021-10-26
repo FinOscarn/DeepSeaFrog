@@ -17,10 +17,8 @@ public class Fish : MonoBehaviour
         transform.Translate(Vector2.down * downSpeed * Time.deltaTime);
     }
 
-    public void Init(Sprite sprite, float moveSpeed, Food targetFood = null)
+    public void SetTarget(Food targetFood)
     {
-        this.sprite = sprite;
-        this.moveSpeed = moveSpeed;
         this.targetFood = targetFood;
     }
 
@@ -36,7 +34,7 @@ public class Fish : MonoBehaviour
         }
         else
         {
-            food.gameObject.SetActive(false);
+            food.Disable();
         }
     }
 }

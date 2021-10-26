@@ -117,6 +117,8 @@ public class UIManager : MonoBehaviour
 
 
         // 게임시작
+        GameManager.instance.startGame();
+
         audioSource.Play();
         scoreText.gameObject.SetActive(true); // 점수 구현
         // 먹이 구현

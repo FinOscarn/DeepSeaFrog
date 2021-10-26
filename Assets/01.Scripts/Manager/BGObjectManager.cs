@@ -27,7 +27,10 @@ public class BGObjectManager : MonoBehaviour
         player = GameManager.instance.player;
         playerTrm = player.transform;
 
-        StartCoroutine(CreateBGObject());
+        GameManager.instance.startGame += () =>
+        {
+            StartCoroutine(CreateBGObject());
+        };
     }
 
     private IEnumerator CreateBGObject()

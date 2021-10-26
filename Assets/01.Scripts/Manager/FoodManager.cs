@@ -24,11 +24,13 @@ public class FoodManager : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.player.transform;
-
-        StartCoroutine(CreateBGObject());
+        GameManager.instance.startGame += () =>
+        {
+            StartCoroutine(CreateFood());
+        };
     }
 
-    private IEnumerator CreateBGObject()
+    private IEnumerator CreateFood()
     {
         while (!GameManager.instance.isGameOver)
         {
