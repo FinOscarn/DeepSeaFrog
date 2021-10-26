@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FishManager : MonoBehaviour
 {
+    public static FishManager instance;
+
     public GameObject fishPrefab;
 
     public readonly float maxY = 3f;
@@ -16,8 +18,15 @@ public class FishManager : MonoBehaviour
 
     private Transform player;
 
+    private Coroutine co;
+
     private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+
         PoolManager.CreatePool<Fish>(fishPrefab, transform, 10);
     }
 
@@ -27,13 +36,30 @@ public class FishManager : MonoBehaviour
 
         GameManager.instance.startGame += () =>
         {
-            StartCoroutine(CreateFish());
+            co = StartCoroutine(CreateFish());
+        };
+
+        GameManager.instance.pause += pause =>
+        {
+            if (pause)
+            {
+                StopCoroutine(co);
+            }
+            else
+            {
+                co = StartCoroutine(CreateFish());
+            }
         };
     }
 
     public void CallFish(Food food)
     {
+        Fish fish = PoolManager.GetItem<Fish>();
 
+        Vector3 pos = new Vector3(spawnX, food.transform.position.y, 1);
+        fish.SetPosition(pos);
+
+        fish.SetTarget(food);
     }
 
     private IEnumerator CreateFish()
@@ -43,7 +69,9 @@ public class FishManager : MonoBehaviour
             Fish fish = PoolManager.GetItem<Fish>();
 
             float y = Random.Range(minY, maxY);
-            fish.gameObject.transform.position = new Vector3(spawnX, player.position.y + y, 1);
+            Vector3 pos = new Vector3(spawnX, player.position.y + y, 1);
+
+            fish.SetPosition(pos);
 
             float delay = Random.Range(minTime, maxTime);
             yield return new WaitForSeconds(delay);

@@ -16,6 +16,8 @@ public class BGObjectManager : MonoBehaviour
     private Transform playerTrm;
     private Player player;
 
+    private Coroutine co;
+
     private void Awake()
     {
         PoolManager.CreatePool<BGObject>(bgObjectPrefab, transform, 10);
@@ -29,7 +31,19 @@ public class BGObjectManager : MonoBehaviour
 
         GameManager.instance.startGame += () =>
         {
-            StartCoroutine(CreateBGObject());
+            co = StartCoroutine(CreateBGObject());
+        };
+
+        GameManager.instance.pause += pause =>
+        {
+            if(pause)
+            {
+                StopCoroutine(co);
+            }
+            else
+            {
+                co = StartCoroutine(CreateBGObject());
+            }
         };
     }
 

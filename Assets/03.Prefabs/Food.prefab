@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5479054591652175917}
   - component: {fileID: 5479054591652175914}
   - component: {fileID: 5479054591652175916}
-  - component: {fileID: 2397338222013307337}
+  - component: {fileID: 6356329559412347482}
   m_Layer: 0
   m_Name: Food
   m_TagString: Untagged
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1674261051
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 6902288473526752927, guid: 08c52bbed93bd9a4a9e2e52e5cfdb836, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,7 +103,7 @@ MonoBehaviour:
   isCling: 0
   orginSpeed: 7
   clingSpeed: 0
---- !u!58 &2397338222013307337
+--- !u!58 &6356329559412347482
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,4 +118,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 2

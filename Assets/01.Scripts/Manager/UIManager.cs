@@ -53,6 +53,8 @@ public class UIManager : MonoBehaviour
     public void StopGame()
     {
         // 플레이어 고정
+        GameManager.instance.pause(true);
+
         stopPanel.alpha = 1;
         stopPanel.interactable = true;
         stopPanel.blocksRaycasts = true;
@@ -61,6 +63,8 @@ public class UIManager : MonoBehaviour
     }
     public void ResumeGame()
     {
+        GameManager.instance.pause(false);
+
         stopPanel.alpha = 0;
         stopPanel.interactable = false;
         stopPanel.blocksRaycasts = false;

@@ -15,6 +15,8 @@ public class FoodManager : MonoBehaviour
     private WaitForSeconds ws;
     private Transform player;
 
+    private Coroutine co;
+
     private void Awake()
     {
         PoolManager.CreatePool<Food>(foodPrefab, transform, 10);
@@ -26,7 +28,19 @@ public class FoodManager : MonoBehaviour
         player = GameManager.instance.player.transform;
         GameManager.instance.startGame += () =>
         {
-            StartCoroutine(CreateFood());
+            co = StartCoroutine(CreateFood());
+        };
+
+        GameManager.instance.pause += pause =>
+        {
+            if (pause)
+            {
+                StopCoroutine(co);
+            }
+            else
+            {
+                co = StartCoroutine(CreateFood());
+            }
         };
     }
 

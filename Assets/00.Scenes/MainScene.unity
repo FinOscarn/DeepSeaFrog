@@ -526,6 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.3
   isDown: 1
+  isPaused: 0
 --- !u!1 &198348890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,7 +1171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &497767007
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1658,7 +1659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &719898063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1750,7 +1751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2829,7 +2830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f2b0e04d5953841896829c27844eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGameStarted: 0
+  isPaused: 0
   isCling: 0
   canMove: 1
   upSpeed: 0.5
@@ -2848,7 +2849,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
     public Player player;
 
     public bool isGameOver = false;
+    //게임 시작할때 
     public Action startGame = () => { };
+
+    //일시정지
+    public Action<bool> pause = pause => { };
 
     private void Awake()
     {

@@ -9,9 +9,19 @@ public class Meter : MonoBehaviour
     public float moveSpeed = 0.1f;
     public bool isDown = true;
 
+    public bool isPaused = false;
+
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+    }
+
+    private void Start()
+    {
+        GameManager.instance.pause += pause =>
+        {
+            isPaused = pause;
+        };
     }
 
     private void Update()

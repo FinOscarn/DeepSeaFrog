@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public bool isGameStarted = false;
+    public bool isPaused = true;
     
     public bool isCling = false; //먹이에 붙어있는지
     public bool canMove = true; //좌우로 이동할 수 있는지
@@ -26,7 +26,12 @@ public class Player : MonoBehaviour
     {
         GameManager.instance.startGame += () =>
         {
-            isGameStarted = true;
+            isPaused = false;
+        };
+
+        GameManager.instance.pause += pause =>
+        {
+            isPaused = pause;
         };
 
         InputManager.instance.onClick += () =>
@@ -42,6 +47,8 @@ public class Player : MonoBehaviour
                 {
                     food.isCling = false;
                     food = null;
+
+                    clingTimer = 0f;
                 }
             }
         };
@@ -49,7 +56,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!isGameStarted) return;
+        if (isPaused) return;
 
         if(canMove)
         {
@@ -76,14 +83,14 @@ public class Player : MonoBehaviour
 
         if(clingTimer >= maxTime)
         {
-
+            FishManager.instance.CallFish(food);
             clingTimer = 0;
         }
     }
 
     public void ReachFood(Food food)
     {
-        if (this.food != null) return;
+        if (this.food != null || !food.gameObject.activeSelf) return;
 
         isCling = true;
         food.isCling = true;

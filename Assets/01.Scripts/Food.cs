@@ -14,6 +14,8 @@ public class Food : MonoBehaviour
     public float orginSpeed = 1.5f;
     public float clingSpeed;
 
+    public bool isPaused = false;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -22,12 +24,19 @@ public class Food : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.player;
-        
+
+        GameManager.instance.pause += pause =>
+        {
+            isPaused = pause;
+        };
+
         clingSpeed = orginSpeed * 0.75f;
     }
 
     private void Update()
     {
+        if (isPaused) return;
+
         if(isCling)
         {
             transform.Translate(Vector2.down * clingSpeed * Time.deltaTime);
@@ -37,7 +46,8 @@ public class Food : MonoBehaviour
             transform.Translate(Vector2.down * orginSpeed * Time.deltaTime);
         }
 
-        if(player.transform.position.y - transform.position.y > 10)
+        //플레이어와 일정거리이상 떨어져있으면 비활성화시킨다
+        if(player.transform.position.y - transform.position.y >= 10)
         {
             gameObject.SetActive(false);
         }
@@ -55,14 +65,14 @@ public class Food : MonoBehaviour
         {
             player.isCling = false;
             isCling = false;
-        }
 
-        player.food = null;
+            player.food = null;
+        }
 
         gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         player.ReachFood(this);
     }
