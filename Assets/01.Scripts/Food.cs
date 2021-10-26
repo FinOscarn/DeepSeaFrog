@@ -43,4 +43,9 @@ public class Food : MonoBehaviour
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         transform.position = pos;
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        player.ReachFood(this);
+    }
 }

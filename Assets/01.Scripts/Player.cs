@@ -61,16 +61,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    public void ReachFood(Food food)
     {
-        print("¥Í¿Ω");
-
-        Food food = col.gameObject.GetComponent<Food>();
-
-        if (food == null || this.food != null) return;
+        if (this.food != null) return;
 
         isCling = true;
         food.isCling = true;
+
         canMove = false;
 
         this.food = food;

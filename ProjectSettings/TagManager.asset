@@ -47,6 +47,9 @@ TagManager:
   - name: effect
     uniqueID: 1664226359
     locked: 0
+  - name: fish
+    uniqueID: 209416135
+    locked: 0
   - name: food
     uniqueID: 2620706245
     locked: 0

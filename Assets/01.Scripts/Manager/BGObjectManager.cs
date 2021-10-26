@@ -13,7 +13,8 @@ public class BGObjectManager : MonoBehaviour
     public float createDelay = 0.2f;
 
     private WaitForSeconds ws;
-    private Transform player;
+    private Transform playerTrm;
+    private Player player;
 
     private void Awake()
     {
@@ -23,7 +24,8 @@ public class BGObjectManager : MonoBehaviour
 
     private void Start()
     {
-        player = GameManager.instance.player.transform;
+        player = GameManager.instance.player;
+        playerTrm = player.transform;
 
         StartCoroutine(CreateBGObject());
     }
@@ -32,10 +34,13 @@ public class BGObjectManager : MonoBehaviour
     {
         while (!GameManager.instance.isGameOver)
         {
-            BGObject bGObject = PoolManager.GetItem<BGObject>();
-            Vector3 pos = new Vector3(Random.Range(minX, maxX), player.position.y - minusY, 0);
+            if (player.isCling)
+            {
+                BGObject bGObject = PoolManager.GetItem<BGObject>();
+                Vector3 pos = new Vector3(Random.Range(minX, maxX), playerTrm.position.y - minusY, 0);
 
-            bGObject.Init(pos);
+                bGObject.Init(pos);
+            }
 
             yield return ws;
         }
