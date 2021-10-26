@@ -116,12 +116,11 @@ public class UIManager : MonoBehaviour
         StartCoroutine(CheckTime(title));
 
 
-
-        // 플레이어 생성
+        // 게임시작
         audioSource.Play();
         scoreText.gameObject.SetActive(true); // 점수 구현
-        
         // 먹이 구현
+
     }
 
     // 플레이어가 패배한다면, 사용되는 함수, GameOver패널로 전환된다.
