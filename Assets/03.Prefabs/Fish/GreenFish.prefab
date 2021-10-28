@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1410673497200057841}
   - component: {fileID: 1410673497200057842}
-  - component: {fileID: -1764466316600245528}
-  - component: {fileID: 355864228207953169}
   - component: {fileID: 6327175427296289470}
+  - component: {fileID: -5864352132467221202}
+  - component: {fileID: -4144023961903346299}
   m_Layer: 0
-  m_Name: Fish
-  m_TagString: Untagged
+  m_Name: GreenFish
+  m_TagString: FISH
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,24 +85,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1764466316600245528
-MonoBehaviour:
+--- !u!58 &6327175427296289470
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410673497200057840}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 126ec3a5e6cc2864fbf0cc0f65bd4930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 08755663d7bae5749ad47bc935285821, type: 3}
-  moveSpeed: 2
-  downSpeed: 3
-  maxX: 3.6
-  targetFood: {fileID: 0}
---- !u!50 &355864228207953169
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.16019073, y: -0.036580816}
+  serializedVersion: 2
+  m_Radius: 0.111711174
+--- !u!50 &-5864352132467221202
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -123,19 +122,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6327175427296289470
-CircleCollider2D:
+--- !u!114 &-4144023961903346299
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410673497200057840}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.19065097, y: -0.034734726}
-  serializedVersion: 2
-  m_Radius: 0.07940486
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2191531c118ec5c48a1f5289ab245504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  downSpeed: 3
+  maxEatCnt: 1
+  isPaused: 0

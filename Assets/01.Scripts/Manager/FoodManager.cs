@@ -6,11 +6,11 @@ public class FoodManager : MonoBehaviour
 {
     public GameObject foodPrefab;
 
-    public readonly float maxX = 2.313f;
-    public readonly float minX = -2.313f;
+    public const float maxX = 2.313f;
+    public const float minX = -2.313f;
 
-    public float plusY = 1f;
-    public float createDelay = 0.5f;
+    public const float plusY = 10f;
+    public const float createDelay = 1f;
 
     private WaitForSeconds ws;
     private Transform player;

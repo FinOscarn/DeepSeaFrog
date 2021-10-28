@@ -7,14 +7,15 @@ public class FishManager : MonoBehaviour
     public static FishManager instance;
 
     public GameObject fishPrefab;
+    public GameObject bluefishPrefab;
 
-    public readonly float maxY = 3f;
-    public readonly float minY = -3f;
+    public const float maxY = 3f;
+    public const float minY = -3f;
 
-    public readonly float maxTime = 5f;
-    public readonly float minTime = 1f;
+    public const float maxTime = 5f;
+    public const float minTime = 1f;
 
-    public float spawnX = -3.4f;
+    public readonly float spawnX = -3.4f;
 
     private Transform player;
 
@@ -28,6 +29,7 @@ public class FishManager : MonoBehaviour
         }
 
         PoolManager.CreatePool<Fish>(fishPrefab, transform, 10);
+        PoolManager.CreatePool<BlueFish>(bluefishPrefab, transform);
     }
 
     private void Start()
@@ -52,14 +54,16 @@ public class FishManager : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// 파도고기를 부르는 함수입니다
+    /// </summary>
+    /// <param name="food">목표 먹이</param>
     public void CallFish(Food food)
     {
-        Fish fish = PoolManager.GetItem<Fish>();
+        BlueFish fish = PoolManager.GetItem<BlueFish>();
 
         Vector3 pos = new Vector3(spawnX, food.transform.position.y, 1);
-        fish.SetPosition(pos);
-
-        fish.SetTarget(food);
+        fish.Init(food);
     }
 
     private IEnumerator CreateFish()

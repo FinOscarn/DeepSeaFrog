@@ -40,16 +40,7 @@ public class Player : MonoBehaviour
 
             if(isCling)
             {
-                isCling = false;
-                canMove = true;
-
-                if(food != null)
-                {
-                    food.isCling = false;
-                    food = null;
-
-                    clingTimer = 0f;
-                }
+                DisuniteFood(food);
             }
         };
     }
@@ -88,10 +79,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ReachFood(Food food)
+    /// <summary>
+    /// 플레이어가 먹이에 붙을 수 있는 상태인지를 반환합니다
+    /// </summary>
+    /// <param name="food">먹이</param>
+    /// <returns>플레이어가 먹이에 붙을 수 있는 상태</returns>
+    public bool CanUnite(Food food)
     {
-        if (this.food != null || !food.gameObject.activeSelf) return;
+        return this.food == null && food.gameObject.activeSelf;
+    }
 
+    /// <summary>
+    /// 플레이어가 먹이에 붙는 함수입니다
+    /// </summary>
+    /// <param name="food">붙을 먹이</param>
+    public void UniteFood(Food food)
+    {
         isCling = true;
         food.isCling = true;
 
@@ -99,5 +102,21 @@ public class Player : MonoBehaviour
 
         this.food = food;
         this.downSpeed = food.clingSpeed;
+    }
+
+    /// <summary>
+    /// 플레이어가 먹이에서 강제로 떨어지는 함수입니다
+    /// </summary>
+    /// <param name="food">떨어질 먹이</param>
+    public void DisuniteFood(Food food)
+    {
+        isCling = false;
+        food.isCling = false;
+
+        canMove = true;
+
+        this.food = null;
+
+        clingTimer = 0f;
     }
 }

@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.68235296}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1095,8 +1095,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgObjectPrefab: {fileID: 6760741810090273093, guid: 5af961a1248925c41866bf1eb4b03487, type: 3}
-  minusY: 5
-  createDelay: 0.5
 --- !u!114 &435007483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,8 +1134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 5479054591652175915, guid: c6848c1e5da115b47a108842f8599f24, type: 3}
-  plusY: 6
-  createDelay: 1
 --- !u!114 &435007486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,8 +1146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43094f56092895e4f94bc6365ec36f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishPrefab: {fileID: 1410673497200057840, guid: 832d9077bf0ca1a479ecdd90827727d1, type: 3}
-  spawnX: -3.4
+  fishPrefab: {fileID: 1410673497200057840, guid: 0551f569d4e61274a978e92d9f7265d6, type: 3}
+  bluefishPrefab: {fileID: 1410673497200057840, guid: 28aa491bfd0e6fd4197e5e553b75790a, type: 3}
 --- !u!1 &497767006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,7 +2744,7 @@ GameObject:
   - component: {fileID: 1808869174}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: PLAYER
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2830,7 +2826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f2b0e04d5953841896829c27844eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
+  isPaused: 1
   isCling: 0
   canMove: 1
   upSpeed: 0.5

@@ -6,11 +6,11 @@ public class BGObjectManager : MonoBehaviour
 {
     public GameObject bgObjectPrefab;
 
-    public readonly float maxX = 2.313f;
-    public readonly float minX = -2.313f;
+    public const float maxX = 2.313f;
+    public const float minX = -2.313f;
 
-    public float minusY = 1f;
-    public float createDelay = 0.2f;
+    public const float minusY = 1f;
+    public const float createDelay = 0.2f;
 
     private WaitForSeconds ws;
     private Transform playerTrm;
