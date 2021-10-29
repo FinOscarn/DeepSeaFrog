@@ -58,7 +58,7 @@ public class FishManager : MonoBehaviour
     /// 파도고기를 부르는 함수입니다
     /// </summary>
     /// <param name="food">목표 먹이</param>
-    public void CallFish(Food food)
+    public void CallBlueFish(Food food)
     {
         BlueFish fish = PoolManager.GetItem<BlueFish>();
 
@@ -66,6 +66,21 @@ public class FishManager : MonoBehaviour
         fish.Init(food);
     }
 
+    /// <summary>
+    /// 복어를 소환하는 함수입니다
+    /// </summary>
+    public void CallSpikeFish()
+    {
+        Fish fish = PoolManager.GetItem<Fish>();
+        Vector3 pos = new Vector3(spawnX, player.position.y, 1);
+
+        fish.SetPosition(pos);
+    }
+
+    /// <summary>
+    /// 계속해서 물고기를 생성해주는 루틴입니다
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator CreateFish()
     {
         while (!GameManager.instance.isGameOver)

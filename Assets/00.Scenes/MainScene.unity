@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43094f56092895e4f94bc6365ec36f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishPrefab: {fileID: 1410673497200057840, guid: 0551f569d4e61274a978e92d9f7265d6, type: 3}
+  fishPrefab: {fileID: 1410673497200057840, guid: 24038d6ed9f07934d8c44e1b531272f8, type: 3}
   bluefishPrefab: {fileID: 1410673497200057840, guid: 28aa491bfd0e6fd4197e5e553b75790a, type: 3}
 --- !u!1 &497767006
 GameObject:
@@ -2829,9 +2829,10 @@ MonoBehaviour:
   isPaused: 1
   isCling: 0
   canMove: 1
-  upSpeed: 0.5
+  upSpeed: -0.5
   downSpeed: 1
-  moveSpeed: 4
+  virSpeed: 1
+  horSpeed: 3
   clingTimer: 0
   maxTime: 3
   food: {fileID: 0}

@@ -10,9 +10,11 @@ public class Player : MonoBehaviour
     public bool isCling = false; //먹이에 붙어있는지
     public bool canMove = true; //좌우로 이동할 수 있는지
 
-    public float upSpeed = 1f; //위로 이동하는 속도
+    public float upSpeed = 1f; //위로 이동하는 속도, 반대방향이니까 -를 붙여주자
     public float downSpeed = 1f; //아래로 떨어지는 속도
-    public float moveSpeed = 1f; //좌우로 이동하는 속도
+
+    public float virSpeed = 1f; //상하로 이동하는 속도
+    public float horSpeed = 1f; //좌우로 이동하는 속도
 
     public float clingTimer;
     public float maxTime = 3f;
@@ -53,28 +55,29 @@ public class Player : MonoBehaviour
         {
             if (moveDir == MoveDir.Left)
             {
-                transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+                transform.Translate(Vector2.left * horSpeed * Time.deltaTime);
             }
             else
             {
-                transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                transform.Translate(Vector2.right * horSpeed * Time.deltaTime);
             }
         }
 
         if(!isCling)
         {
-            transform.Translate(Vector2.up * upSpeed * Time.deltaTime);
+            virSpeed = upSpeed;
         }
         else
         {
-            transform.Translate(Vector2.down * downSpeed * Time.deltaTime);
-
+            virSpeed = downSpeed;
             clingTimer += Time.deltaTime;
         }
 
-        if(clingTimer >= maxTime)
+        transform.Translate(Vector2.down * virSpeed * Time.deltaTime);
+
+        if (clingTimer >= maxTime)
         {
-            FishManager.instance.CallFish(food);
+            FishManager.instance.CallBlueFish(food);
             clingTimer = 0;
         }
     }

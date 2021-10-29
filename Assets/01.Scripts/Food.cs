@@ -8,7 +8,8 @@ public class Food : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [SerializeField]
-    private Player player;
+    protected Player player;
+    protected const string PLAYER_TAG = "PLAYER";
 
     public bool isCling = false;
 
@@ -23,7 +24,7 @@ public class Food : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         player = GameManager.instance.player;
 
@@ -36,7 +37,7 @@ public class Food : MonoBehaviour
         clingSpeed = originSpeed * 0.75f;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (isPaused) return;
 
@@ -95,9 +96,12 @@ public class Food : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(player.CanUnite(this))
+        if(collision.CompareTag(PLAYER_TAG))
         {
-            player.UniteFood(this);
+            if (player.CanUnite(this))
+            {
+                player.UniteFood(this);
+            }
         }
     }
 }
