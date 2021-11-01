@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1410673497200057842}
   - component: {fileID: 6327175427296289470}
   - component: {fileID: -5864352132467221202}
-  - component: {fileID: 6733706884564422288}
+  - component: {fileID: 7717484567229083792}
   m_Layer: 0
-  m_Name: BornFish
+  m_Name: StrongerGreenFish
   m_TagString: FISH
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 209416135
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4237c6a7c7897c94080151e2f91a7034, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d6c18614ffe1a564892b2acff61b5f7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6733706884564422288
+--- !u!114 &7717484567229083792
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1410673497200057840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b42fb11fd36574382e35f7b90c642c, type: 3}
+  m_Script: {fileID: 11500000, guid: 24abef78d9abe6247a0bd1fa24a3f701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
@@ -139,4 +139,3 @@ MonoBehaviour:
   maxEatCnt: 1
   eatCnt: 0
   isPaused: 0
-  soil: {fileID: 4115637328142256913, guid: 44024748767a9d7438764cb496f5d788, type: 3}

@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BornFish : Fish
+public class StrongerGreenFish : Fish
 {
-    public Soil soil;
-
     protected override void Start()
     {
         base.Start();
@@ -30,14 +28,13 @@ public class BornFish : Fish
         }
 
         food.Disable();
-        CreateSoil();
 
         base.OnFoodTrigger(food);
     }
 
-    private void CreateSoil()
+    protected override void OnPlayerTirgger()
     {
-        //나중에 FishManager에 분비물을 풀링하는 함수를 만들어서 가져와 쓰자
-        Instantiate(soil, transform.position, Quaternion.identity);
+        GameManager.instance.pause(true);
+        //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
     }
 }
