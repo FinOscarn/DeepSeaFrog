@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GrayFish : Fish
 {
+    public GrayFish()
+    {
+        type = FishType.Gray;
+    }
+
     protected override void Start()
     {
         base.Start();

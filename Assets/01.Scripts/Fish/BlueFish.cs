@@ -11,11 +11,6 @@ public class BlueFish : Fish
 
     private Food target;
 
-    private void Awake()
-    {
-        mark = GetComponentInChildren<Mark>();
-    }
-
     protected override void Start()
     {
         base.Start();
@@ -31,7 +26,6 @@ public class BlueFish : Fish
     protected override void OnEnable()
     {
         base.OnEnable();
-        mark.gameObject.SetActive(true);
     }
 
     private void OnDisable()
@@ -44,9 +38,9 @@ public class BlueFish : Fish
     /// </summary>
     /// <param name="target">쫒아갈 먹이</param>
     /// <param name="pos">스폰될 위치</param>
-    public void Init(Food target)
+    public void Init(Food target, bool isLeftMove)
     {
-        StartCoroutine(Setting(target));
+        StartCoroutine(Setting(target, isLeftMove));
     }
 
     /// <summary>
@@ -54,14 +48,23 @@ public class BlueFish : Fish
     /// </summary>
     /// <param name="target">쫒아갈 먹이</param>
     /// <param name="pos">스폰될 위치</param>
-    private IEnumerator Setting(Food target)
+    private IEnumerator Setting(Food target, bool isLeftMove)
     {
         this.target = target;
-        mark.targetTrm = target.gameObject.transform;
+        mark = FishManager.instance.GetMark(target);
 
         yield return new WaitForSeconds(moveDelay);
 
-        Vector3 pos = new Vector3(FishManager.instance.spawnX, target.transform.position.y, 1);
+        Vector3 pos;
+
+        if (isLeftMove)
+        {
+            pos = new Vector3(FishManager.instance.rightSpawnX, target.transform.position.y, 1);
+        }
+        else
+        {
+            pos = new Vector3(FishManager.instance.leftSpawnX, target.transform.position.y, 1);
+        }
 
         transform.position = pos;
         canMove = true;
@@ -80,9 +83,13 @@ public class BlueFish : Fish
             //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
         }
 
-        food.Disable();
-        mark.Disable();
+        //내가 목표로 하고 있는 먹이일때만 충돌체크를 해준다
+        if(food == this.target)
+        {
+            food.Disable();
+            mark.Disable();
 
-        base.OnFoodTrigger(food);
+            base.OnFoodTrigger(food);
+        }
     }
 }

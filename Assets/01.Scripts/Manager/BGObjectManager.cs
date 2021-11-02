@@ -9,8 +9,8 @@ public class BGObjectManager : MonoBehaviour
     public const float maxX = 2.313f;
     public const float minX = -2.313f;
 
-    public const float minusY = 1f;
-    public const float createDelay = 0.2f;
+    public const float minusY = 5f;
+    public const float createDelay = 0.5f;
 
     private WaitForSeconds ws;
     private Transform playerTrm;

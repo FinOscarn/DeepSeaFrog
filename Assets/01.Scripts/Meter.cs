@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Meter : MonoBehaviour
 {
+    private Player player;
+
     private MeshRenderer meshRenderer;
     private Vector2 offset = Vector2.zero;
-    public float moveSpeed = 0.1f;
+    public float downSpeed = 0.1f;
+    public float upSpeed = 0.1f;
     public bool isDown = true;
 
     public bool isPaused = false;
@@ -18,6 +21,8 @@ public class Meter : MonoBehaviour
 
     private void Start()
     {
+        player = GameManager.instance.player;
+
         GameManager.instance.pause += pause =>
         {
             isPaused = pause;
@@ -26,7 +31,15 @@ public class Meter : MonoBehaviour
 
     private void Update()
     {
-        offset.y += moveSpeed * Time.deltaTime;
+        if(player.isCling)
+        {
+            offset.y += downSpeed * Time.deltaTime;
+        }
+        else
+        {
+            offset.y -= upSpeed * Time.deltaTime;
+        }
+
         meshRenderer.material.SetTextureOffset("_MainTex", offset);
     }
 }

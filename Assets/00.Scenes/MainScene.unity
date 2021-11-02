@@ -524,7 +524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4fafc37b2773a344bd78a4d4455c59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.3
+  downSpeed: 0.3
+  upSpeed: 0.1
   isDown: 1
   isPaused: 0
 --- !u!1 &198348890
@@ -1146,8 +1147,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43094f56092895e4f94bc6365ec36f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishPrefab: {fileID: 1410673497200057840, guid: bd7616834a4524746a09f36f0c5f4ed6, type: 3}
-  bluefishPrefab: {fileID: 1410673497200057840, guid: 28aa491bfd0e6fd4197e5e553b75790a, type: 3}
+  fishList:
+  - {fileID: -4144023961903346299, guid: 832d9077bf0ca1a479ecdd90827727d1, type: 3}
+  - {fileID: 2041318009654372707, guid: 6843b1b5b5091964b836f201d94afc9f, type: 3}
+  - {fileID: -1899700085503757563, guid: 4704cc79a5732b84b86ad64832ff0e3e, type: 3}
+  - {fileID: 4226213132977029535, guid: 4a4ba866b07b1454c895cbd898a79e41, type: 3}
+  - {fileID: 3233585888663259139, guid: 0551f569d4e61274a978e92d9f7265d6, type: 3}
+  - {fileID: 20332012024837341, guid: f47f94048d2720c43882bd7efb2f3fc4, type: 3}
+  - {fileID: 6733706884564422288, guid: 24038d6ed9f07934d8c44e1b531272f8, type: 3}
+  - {fileID: 7717484567229083792, guid: bd7616834a4524746a09f36f0c5f4ed6, type: 3}
+  bluefishPrefab: {fileID: 442780369916943143, guid: 28aa491bfd0e6fd4197e5e553b75790a, type: 3}
+  soilPrefab: {fileID: 4115637328142256913, guid: 44024748767a9d7438764cb496f5d788, type: 3}
+  markPrefab: {fileID: 2368991987946496983, guid: de7a9400b2af4584fa8d73742d0d4b09, type: 3}
 --- !u!1 &497767006
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5864352132467221202}
   - component: {fileID: 6733706884564422288}
   m_Layer: 0
-  m_Name: BornFish
+  m_Name: BoneFish
   m_TagString: FISH
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   downSpeed: 3
+  type: 0
   maxEatCnt: 1
   eatCnt: 0
   isPaused: 0

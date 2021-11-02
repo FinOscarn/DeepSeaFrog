@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BornFish : Fish
+public class BoneFish : Fish
 {
     public Soil soil;
+
+    public BoneFish()
+    {
+        type = FishType.Bone;
+    }
 
     protected override void Start()
     {
@@ -30,14 +35,9 @@ public class BornFish : Fish
         }
 
         food.Disable();
-        CreateSoil();
+        //FishManager에서 Pool에있는 Soil을 가져온다
+        FishManager.instance.GetSoil(transform.position);
 
         base.OnFoodTrigger(food);
-    }
-
-    private void CreateSoil()
-    {
-        //나중에 FishManager에 분비물을 풀링하는 함수를 만들어서 가져와 쓰자
-        Instantiate(soil, transform.position, Quaternion.identity);
     }
 }

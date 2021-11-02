@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class StrongerGreenFish : Fish
 {
+    public StrongerGreenFish()
+    {
+        type = FishType.StrongerGreen;
+    }
+
     protected override void Start()
     {
         base.Start();

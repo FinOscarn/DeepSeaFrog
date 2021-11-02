@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RedFish : Fish
 {
+    public RedFish()
+    {
+        type = FishType.Red;
+    }
+
     protected override void Start()
     {
         base.Start();

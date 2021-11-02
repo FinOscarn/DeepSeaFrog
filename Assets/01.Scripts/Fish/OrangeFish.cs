@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class OrangeFish : Fish
 {
+    public OrangeFish()
+    {
+        type = FishType.Orange;
+    }
+
     protected override void Start()
     {
         base.Start();

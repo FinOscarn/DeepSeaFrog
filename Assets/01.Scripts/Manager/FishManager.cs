@@ -6,8 +6,13 @@ public class FishManager : MonoBehaviour
 {
     public static FishManager instance;
 
-    public GameObject fishPrefab;
-    public GameObject bluefishPrefab;
+    [SerializeField]
+    private List<Fish> fishList = new List<Fish>();
+
+    public BlueFish bluefishPrefab;
+
+    public Soil soilPrefab;
+    public Mark markPrefab;
 
     public const float maxY = 3f;
     public const float minY = -3f;
@@ -15,7 +20,8 @@ public class FishManager : MonoBehaviour
     public const float maxTime = 5f;
     public const float minTime = 1f;
 
-    public readonly float spawnX = -3.4f;
+    public readonly float leftSpawnX = -3.4f;
+    public readonly float rightSpawnX = 3.4f;
 
     private Transform player;
 
@@ -28,8 +34,10 @@ public class FishManager : MonoBehaviour
             instance = this;
         }
 
-        PoolManager.CreatePool<Fish>(fishPrefab, transform, 10);
-        PoolManager.CreatePool<BlueFish>(bluefishPrefab, transform);
+        PoolManager.CreatePool<BlueFish>(bluefishPrefab.gameObject, transform, 2);
+
+        PoolManager.CreatePool<Soil>(soilPrefab.gameObject, transform, 10);
+        PoolManager.CreatePool<Mark>(markPrefab.gameObject, transform, 2);
     }
 
     private void Start()
@@ -38,7 +46,7 @@ public class FishManager : MonoBehaviour
 
         GameManager.instance.startGame += () =>
         {
-            co = StartCoroutine(CreateFish());
+            co = StartCoroutine(CreateFishRoutine());
         };
 
         GameManager.instance.pause += pause =>
@@ -49,7 +57,7 @@ public class FishManager : MonoBehaviour
             }
             else
             {
-                co = StartCoroutine(CreateFish());
+                co = StartCoroutine(CreateFishRoutine());
             }
         };
     }
@@ -62,38 +70,87 @@ public class FishManager : MonoBehaviour
     {
         BlueFish fish = PoolManager.GetItem<BlueFish>();
 
-        Vector3 pos = new Vector3(spawnX, food.transform.position.y, 1);
-        fish.Init(food);
+        bool isLeftMove = (Random.value > 0.5f);
+
+        fish.Init(food, isLeftMove);
+        fish.isLeftMove = isLeftMove;
+        fish.FlipSprite(isLeftMove);
     }
 
     /// <summary>
-    /// 복어를 소환하는 함수입니다
+    /// BornFish에서 사용하는 분비물을 리턴하는 함수
     /// </summary>
-    public void CallSpikeFish()
+    /// <param name="position">BornFish의 워치값</param>
+    /// <returns></returns>
+    public Soil GetSoil(Vector3 position)
     {
-        Fish fish = PoolManager.GetItem<Fish>();
-        Vector3 pos = new Vector3(spawnX, player.position.y, 1);
+        Soil soil = PoolManager.GetItem<Soil>();
+        soil.transform.position = position;
 
-        fish.SetPosition(pos);
+        return soil;
+    }
+
+    public Mark GetMark(Food food)
+    {
+        Mark mark = PoolManager.GetItem<Mark>();
+        mark.targetTrm = food.gameObject.transform;
+
+        return mark;
     }
 
     /// <summary>
     /// 계속해서 물고기를 생성해주는 루틴입니다
     /// </summary>
     /// <returns></returns>
-    private IEnumerator CreateFish()
+    private IEnumerator CreateFishRoutine()
     {
         while (!GameManager.instance.isGameOver)
         {
-            Fish fish = PoolManager.GetItem<Fish>();
+            bool randBool = (Random.value > 0.5f);
 
+            CreateRandomFish(randBool);
+
+            float delay = Random.Range(minTime, maxTime);
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+    /// <summary>
+    /// 랜덤으로 물고기를 생성하는 함수입니다
+    /// </summary>
+    /// <param name="spawnX"></param>
+    private void CreateRandomFish(bool isLeftMove)
+    {
+        FishType type = (FishType)Random.Range((int)FishType.Green, (int)FishType.StrongerGreen);
+
+        //나중에 풀링으로 바꾸자
+        Fish fish = Instantiate(fishList[(int)type], transform);
+
+        float spawnX;
+
+        if (isLeftMove)
+        {
+            spawnX = rightSpawnX;
+        }
+        else
+        {
+            spawnX = leftSpawnX;
+        }
+
+        fish.isLeftMove = isLeftMove;
+        fish.FlipSprite(isLeftMove);
+
+        if (type == FishType.Spike)
+        {
+            Vector3 spikePos = new Vector3(spawnX, player.position.y, 1);
+            fish.SetPosition(spikePos);
+        }
+        else
+        {
             float y = Random.Range(minY, maxY);
             Vector3 pos = new Vector3(spawnX, player.position.y + y, 1);
 
             fish.SetPosition(pos);
-
-            float delay = Random.Range(minTime, maxTime);
-            yield return new WaitForSeconds(delay);
         }
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GreenFish : Fish
 {
-    protected override void Start()
+    public GreenFish()
     {
-        base.Start();
+        type = FishType.Green;
     }
 
     protected override void Update()

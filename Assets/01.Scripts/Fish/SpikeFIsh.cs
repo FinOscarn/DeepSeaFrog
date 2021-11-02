@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SpikeFIsh : Fish
 {
+    public SpikeFIsh()
+    {
+        type = FishType.Spike;
+    }
+
     protected override void Start()
     {
         base.Start();
