@@ -6,9 +6,6 @@ public class FishManager : MonoBehaviour
 {
     public static FishManager instance; //싱글톤 패턴을 위한 인스턴스
 
-    [SerializeField]
-    private List<Fish> fishList = new List<Fish>(); //물고기들의 종류를 담아놓는 리스트
-
     public BlueFish bluefishPrefab; //파도고기의 프리팹
 
     public Soil soilPrefab; //뼈고기의 분비물 프리펩
@@ -148,7 +145,6 @@ public class FishManager : MonoBehaviour
     /// <summary>
     /// 랜덤으로 물고기를 생성하는 함수입니다
     /// </summary>
-    /// <param name="spawnX"></param>
     private void CreateRandomFish(bool isLeftMove)
     {
         //FishType의 첫번째부터 마지막까지 하나를 랜덤으로 뽑는다
@@ -156,7 +152,7 @@ public class FishManager : MonoBehaviour
 
         //나중에 풀링으로 바꾸자
         //FishType에 맞는 물고기를 하나 생성한다
-        Fish fish = Instantiate(fishList[(int)type], transform);
+        Fish fish = FishPoolManager.instance.GetFish(type);
 
         //물고기가 생성될 좌표
         float spawnX;

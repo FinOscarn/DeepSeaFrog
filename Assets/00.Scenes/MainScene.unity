@@ -1060,6 +1060,7 @@ GameObject:
   - component: {fileID: 435007484}
   - component: {fileID: 435007485}
   - component: {fileID: 435007486}
+  - component: {fileID: 435007487}
   m_Layer: 0
   m_Name: ManageObject
   m_TagString: Untagged
@@ -1147,6 +1148,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43094f56092895e4f94bc6365ec36f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bluefishPrefab: {fileID: 442780369916943143, guid: 28aa491bfd0e6fd4197e5e553b75790a, type: 3}
+  soilPrefab: {fileID: 4115637328142256913, guid: 44024748767a9d7438764cb496f5d788, type: 3}
+  markPrefab: {fileID: 2368991987946496983, guid: de7a9400b2af4584fa8d73742d0d4b09, type: 3}
+--- !u!114 &435007487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435007480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abee74c70f0d7df459ed742cb5467eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   fishList:
   - {fileID: -4144023961903346299, guid: 832d9077bf0ca1a479ecdd90827727d1, type: 3}
   - {fileID: 2041318009654372707, guid: 6843b1b5b5091964b836f201d94afc9f, type: 3}
@@ -1156,9 +1172,6 @@ MonoBehaviour:
   - {fileID: 20332012024837341, guid: f47f94048d2720c43882bd7efb2f3fc4, type: 3}
   - {fileID: 6733706884564422288, guid: 24038d6ed9f07934d8c44e1b531272f8, type: 3}
   - {fileID: 7717484567229083792, guid: bd7616834a4524746a09f36f0c5f4ed6, type: 3}
-  bluefishPrefab: {fileID: 442780369916943143, guid: 28aa491bfd0e6fd4197e5e553b75790a, type: 3}
-  soilPrefab: {fileID: 4115637328142256913, guid: 44024748767a9d7438764cb496f5d788, type: 3}
-  markPrefab: {fileID: 2368991987946496983, guid: de7a9400b2af4584fa8d73742d0d4b09, type: 3}
 --- !u!1 &497767006
 GameObject:
   m_ObjectHideFlags: 0
