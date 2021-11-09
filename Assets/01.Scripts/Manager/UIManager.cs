@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     public Text titleText;
     public Text scoreText;
     public Text touchToStartText;
+    public Text highScore;
+    public Text currentScore;
 
     public AudioSource audioSource;
     private Camera cam;
@@ -33,9 +35,10 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        titleText.fontSize = 400;
         cam = Camera.main;
         audioSource = gameObject.GetComponent<AudioSource>();
-        titleText.DOText(text, 2f);
+        //titleText.DOText(text, 2f);
         StartCoroutine(ShowReady());
     }
 
@@ -137,6 +140,9 @@ public class UIManager : MonoBehaviour
         inGame.blocksRaycasts = false;
         StartCoroutine(CheckTime(inGame));
 
+        gameOver.GetComponent<GameObject>().SetActive(true);
+        //highScore
+        //currentScore
         
 
         // 플레이어 비활
@@ -149,7 +155,7 @@ public class UIManager : MonoBehaviour
     {
         gameOver.interactable = false;
         gameOver.blocksRaycasts = false;
-        StartCoroutine(CheckTime(gameOver));
+        //StartCoroutine(CheckTime(gameOver));
 
         // 먹이 이동 시작
         // 플레이어 생성
@@ -169,14 +175,14 @@ public class UIManager : MonoBehaviour
 
     IEnumerator ShowReady()
     {
-        yield return new WaitForSeconds(2.5f);                              
+        yield return new WaitForSeconds(1f);                              
         int count = 0;
-        while (count < 3)
+        while (count < 100)
         {
             touchToStartText.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             touchToStartText.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             count++;
         }
         touchToStartText.gameObject.SetActive(true);
