@@ -15,10 +15,16 @@ public class UIManager : MonoBehaviour
     public CanvasGroup exitButton;
 
     public Text titleText;
-    public Text scoreText;
     public Text touchToStartText;
+
+    // 최고 점수
     public Text highScore;
+
+    // 인게임에서의 현재 점수
     public Text currentScore;
+
+    // 게임 오버시의 마지막 점수
+    public Text finalScore;
 
     public AudioSource audioSource;
     private Camera cam;
@@ -49,7 +55,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // 점수 연산
-        scoreText.text = GameManager.instance.score.ToString();
+        currentScore.text = GameManager.instance.score.ToString();
     }
 
 
@@ -92,7 +98,7 @@ public class UIManager : MonoBehaviour
         title.alpha = 1;
         title.blocksRaycasts = true;
         title.interactable = true;
-        scoreText.gameObject.SetActive(false);
+        currentScore.gameObject.SetActive(false);
     }
 
     // 클릭시 사운드 아이콘과 사운드 재생을 해주는 함수 Clear
@@ -128,7 +134,7 @@ public class UIManager : MonoBehaviour
         GameManager.instance.startGame();
 
         audioSource.Play();
-        scoreText.gameObject.SetActive(true); // 점수 구현
+        currentScore.gameObject.SetActive(true); // 점수 구현
         // 먹이 구현
 
     }
