@@ -21,7 +21,8 @@ public class Player : MonoBehaviour
     public float horSpeed = 1f; //좌우로 이동하는 속도
 
     public float clingTimer; //몇 초간 먹이에 붙어있었는지
-    public float maxTime = 3f; //최대로 먹이에 붙어있을 수 있는 시간
+    public float deathTimer; //몇 초간 떨어져있었는지
+    public const float MAX_TIME = 3f; //최대로 먹이에 붙어있을 수 있는 시간 && 최대로 먹이에서 떨어져 있을 수 있는 시간
 
     public Food food = null; //현재 붙어있는 먹이
     public Action<Food> onCling = food => { }; //먹이에 붙었을 때
@@ -112,6 +113,11 @@ public class Player : MonoBehaviour
         {
             //상하이동속도는 upSpeed로 맞춰준다
             virSpeed = upSpeed;
+            //먹이에 떨어져있는 시간을 계속 더해준다
+            deathTimer += Time.deltaTime;
+
+            //떨어졌으니까 ClingTimer 초기화
+            clingTimer = 0f;
         }
         else
         {
@@ -119,17 +125,27 @@ public class Player : MonoBehaviour
             virSpeed = downSpeed;
             //먹이에 붙어있는 시간을 계속 더해준다
             clingTimer += Time.deltaTime;
+
+            //붙었으니까 DeathTimer 초기화
+            deathTimer = 0f;
         }
         // virSpeed 만큼 계속 아래로 내려준다
         transform.Translate(Vector2.down * virSpeed * Time.deltaTime);
 
         //만약 최대로 붙어있을 수 있는 시간만큼 붙어있었다면
-        if (clingTimer >= maxTime)
+        if (clingTimer >= MAX_TIME)
         {
             //FishManager에서 파도고기를 부르고
             FishManager.instance.CallBlueFish(food);
             //타이머는 다시 0으로 바꿔준다
-            clingTimer = 0;
+            clingTimer = 0f;
+        }
+
+        //만약 최대로 떨어져있을 수 있는 시간만큼 떨어져있었다면
+        if (deathTimer >= MAX_TIME)
+        {
+            //죽인다.
+            GameManager.instance.gameOver();
         }
 
         //점수 업데이트
