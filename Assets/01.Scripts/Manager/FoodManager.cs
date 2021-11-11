@@ -51,6 +51,15 @@ public class FoodManager : MonoBehaviour
         };
     }
 
+    public Food GetFood(Vector3 pos)
+    {
+        Food food = PoolManager.GetItem<Food>();
+
+        food.Init(pos);
+
+        return food;
+    }
+
     private IEnumerator CreateFood()
     {
         while (!isGameOver)

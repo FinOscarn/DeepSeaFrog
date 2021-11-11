@@ -1196,6 +1196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1808869172}
+  foodManager: {fileID: 0}
   score: 0
 --- !u!114 &435007484
 MonoBehaviour:
@@ -3465,7 +3466,7 @@ MonoBehaviour:
   isPaused: 1
   isCling: 0
   canMove: 1
-  upSpeed: -1
+  upSpeed: -1.5
   downSpeed: 1
   virSpeed: 1
   horSpeed: 3

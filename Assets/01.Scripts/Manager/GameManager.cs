@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public Player player;
+    public FoodManager foodManager;
 
     public int score = 0;
 
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("다수의 GameManager가 실행되고있습니다 확인하세요");
         }
+
+        foodManager = GetComponent<FoodManager>();
     }
 
     public void UpdateScore(int score)
