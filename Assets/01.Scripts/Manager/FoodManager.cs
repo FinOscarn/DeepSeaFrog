@@ -26,7 +26,7 @@ public class FoodManager : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.player.transform;
-        GameManager.instance.startGame += () =>
+        GameManager.instance.playerD2ve += () =>
         {
             co = StartCoroutine(CreateFood());
         };

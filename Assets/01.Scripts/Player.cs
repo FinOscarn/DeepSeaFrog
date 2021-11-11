@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Player : MonoBehaviour
     
     public bool isCling = false; //먹이에 붙어있는지
     public bool canMove = true; //좌우로 이동할 수 있는지
+
+    public const float MAX_X = 2.54f;
+    public const float MIN_X = -2.6f;
 
     public float upSpeed = 1f; //위로 이동하는 속도, 반대방향이니까 -를 붙여주자
     public float downSpeed = 1f; //아래로 떨어지는 속도
@@ -29,8 +33,17 @@ public class Player : MonoBehaviour
         //게임이 시작되었을 때 실행할 함수를 등록해준다
         GameManager.instance.startGame += () =>
         {
-            //일시정지를 꺼준다
-            isPaused = false;
+            //닷트윈으로 플레이어가 다이빙하는것 처럼 보이게
+            Sequence seq = DOTween.Sequence();
+
+            seq.Append(transform.DOMoveY(11, 1).SetEase(Ease.InExpo));
+            seq.Append(transform.DOMoveY(0, 1).SetEase(Ease.InExpo));
+            seq.AppendCallback(() =>
+            {
+                //플레이어가 다이빙했다고 알려준다
+                GameManager.instance.playerD2ve();
+                isPaused = false;
+            });
         };
 
         //게임이 일시정지되었을 때 실행할 함수를 등록해준다
@@ -60,8 +73,18 @@ public class Player : MonoBehaviour
         //만약 일시정지상태라면 return
         if (isPaused) return;
 
+        //좌우로 움직일 수 있는 최대 영역 제한
+        if (transform.position.x <= MIN_X)
+        {
+            transform.position = new Vector2(MIN_X, transform.position.y);
+        }
+        if (transform.position.x >= MAX_X)
+        {
+            transform.position = new Vector2(MAX_X, transform.position.y);
+        }
+
         //좌우로 움직일 수 있는 상태라면
-        if(canMove)
+        if (canMove)
         {
             //이동방향이 왼쪽이라면
             if (moveDir == MoveDir.Left)
@@ -76,7 +99,7 @@ public class Player : MonoBehaviour
         }
 
         //만약 먹이에 붙어있지않은 상태라면
-        if(!isCling)
+        if (!isCling)
         {
             //상하이동속도는 upSpeed로 맞춰준다
             virSpeed = upSpeed;
@@ -99,6 +122,9 @@ public class Player : MonoBehaviour
             //타이머는 다시 0으로 바꿔준다
             clingTimer = 0;
         }
+
+        //점수 업데이트
+        GameManager.instance.UpdateScore(-(int)(transform.position.y * 10));
     }
 
     /// <summary>

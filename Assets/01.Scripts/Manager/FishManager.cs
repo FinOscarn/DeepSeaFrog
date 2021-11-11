@@ -45,8 +45,8 @@ public class FishManager : MonoBehaviour
         //플레이어의 트랜스폼은 게임메니저에 있는 플레이어의 트랜스폼으로 가져온다
         player = GameManager.instance.player.transform;
 
-        //게임이 시작되었을때 실행할 함수를 추가해준다
-        GameManager.instance.startGame += () =>
+        //게임이 시작되었을때(플레이어의 다이빙 모션이 끝났을 때) 실행할 함수를 추가해준다
+        GameManager.instance.playerD2ve += () =>
         {
             //물고기를 생성하는 코루틴을 시작해줌과 동시에 변수에 담아둔다
             co = StartCoroutine(CreateFishRoutine());

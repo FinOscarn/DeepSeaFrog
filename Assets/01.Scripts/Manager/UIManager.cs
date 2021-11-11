@@ -46,9 +46,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // 점수 연산
-        //float a = 0;
-        //scoreText.text = 
-        //a += Time.deltaTime;
+        scoreText.text = GameManager.instance.score.ToString();
     }
 
 

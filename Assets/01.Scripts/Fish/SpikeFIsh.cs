@@ -16,7 +16,7 @@ public class SpikeFIsh : Fish
 
     protected override void Update()
     {
-        this.downSpeed = player.virSpeed;
+        this.downSpeed = player.virSpeed * 0.3f;
         base.Update();
     }
 
