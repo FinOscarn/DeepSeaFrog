@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
             //닷트윈으로 플레이어가 다이빙하는것 처럼 보이게
             Sequence seq = DOTween.Sequence();
 
-            seq.Append(transform.DOMoveY(11, 1).SetEase(Ease.InExpo));
+            seq.Append(transform.DOMoveY(9.6f, 1).SetEase(Ease.InExpo));
             seq.Append(transform.DOMoveY(0, 1).SetEase(Ease.InExpo));
             seq.AppendCallback(() =>
             {

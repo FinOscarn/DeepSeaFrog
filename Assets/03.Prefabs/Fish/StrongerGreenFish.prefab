@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1410673497200057841}
   - component: {fileID: 1410673497200057842}
   - component: {fileID: 6327175427296289470}
+  - component: {fileID: 5075458443318198499}
   - component: {fileID: -5864352132467221202}
   - component: {fileID: 7717484567229083792}
   m_Layer: 0
@@ -101,6 +102,22 @@ CircleCollider2D:
   m_Offset: {x: 0.16019073, y: -0.036580816}
   serializedVersion: 2
   m_Radius: 0.111711174
+--- !u!58 &5075458443318198499
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410673497200057840}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.16166073, y: -0.03658077}
+  serializedVersion: 2
+  m_Radius: 0.11058974
 --- !u!50 &-5864352132467221202
 Rigidbody2D:
   serializedVersion: 4
@@ -136,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   downSpeed: 3
+  isLeftMove: 0
+  type: 7
   maxEatCnt: 1
   eatCnt: 0
   isPaused: 0
