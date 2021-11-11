@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
 
     public Player player;
 
-    public bool isGameOver = false;
-
     public int score = 0;
 
     //게임 시작할때 

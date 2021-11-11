@@ -329,8 +329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 497767011}
-  inGame: {fileID: 0}
-  gameOver: {fileID: 0}
+  inGame: {fileID: 719898064}
+  gameOver: {fileID: 144648184}
   stopPanel: {fileID: 1507778163}
   exitButton: {fileID: 1460656986}
   titleText: {fileID: 1078762736}
@@ -1196,7 +1196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1808869172}
-  isGameOver: 0
   score: 0
 --- !u!114 &435007484
 MonoBehaviour:

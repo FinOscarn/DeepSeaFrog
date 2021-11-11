@@ -12,6 +12,8 @@ public class BGObjectManager : MonoBehaviour
     public const float minusY = 5f; //플레이어로부터 얼마나 밑에 스폰되는지
     public const float createDelay = 0.5f; //생성 주기
 
+    private bool isGameOver = false;
+
     private WaitForSeconds ws; //메모리 절약을 위한 인스턴스
     private Transform playerTrm; //플레이어의 위치값
     private Player player; //플레이어
@@ -54,6 +56,11 @@ public class BGObjectManager : MonoBehaviour
                 co = StartCoroutine(CreateBGObject());
             }
         };
+
+        GameManager.instance.gameOver += () =>
+        {
+            isGameOver = true;
+        };
     }
 
     /// <summary>
@@ -63,7 +70,7 @@ public class BGObjectManager : MonoBehaviour
     private IEnumerator CreateBGObject()
     {
         //만약 게임오버상태가 아니라면
-        while (!GameManager.instance.isGameOver)
+        while (!isGameOver)
         {
             //만약 플레이어가 먹이에 붙어있다면
             if (player.isCling)

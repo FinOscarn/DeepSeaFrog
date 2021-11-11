@@ -12,6 +12,8 @@ public class FoodManager : MonoBehaviour
     public const float plusY = 10f;
     public const float createDelay = 1f;
 
+    private bool isGameOver = false;
+
     private WaitForSeconds ws;
     private Transform player;
 
@@ -42,11 +44,16 @@ public class FoodManager : MonoBehaviour
                 co = StartCoroutine(CreateFood());
             }
         };
+
+        GameManager.instance.gameOver += () =>
+        {
+            isGameOver = true;
+        };
     }
 
     private IEnumerator CreateFood()
     {
-        while (!GameManager.instance.isGameOver)
+        while (!isGameOver)
         {
             Food food = PoolManager.GetItem<Food>();
             Vector3 pos = new Vector3(Random.Range(minX, maxX), player.position.y + plusY, 0);

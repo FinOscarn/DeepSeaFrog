@@ -40,6 +40,9 @@ public class UIManager : MonoBehaviour
         audioSource = gameObject.GetComponent<AudioSource>();
         //titleText.DOText(text, 2f);
         StartCoroutine(ShowReady());
+
+        //게임오버를 구독한다
+        GameManager.instance.gameOver += GameOver;
     }
 
 
@@ -133,12 +136,14 @@ public class UIManager : MonoBehaviour
     // 플레이어가 패배한다면, 사용되는 함수, GameOver패널로 전환된다.
     public void GameOver()
     {
-        inGame.GetComponent<GameObject>().SetActive(false);
+        //inGame.GetComponent<GameObject>().SetActive(false);
+        inGame.gameObject.SetActive(false);
         inGame.interactable = false;
         inGame.blocksRaycasts = false;
         StartCoroutine(CheckTime(inGame));
 
-        gameOver.GetComponent<GameObject>().SetActive(true);
+        //gameOver.GetComponent<GameObject>().SetActive(true);
+        gameOver.gameObject.SetActive(true);
         //highScore
         //currentScore
         

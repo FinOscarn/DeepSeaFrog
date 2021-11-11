@@ -28,7 +28,7 @@ public class StrongerGreenFish : Fish
     {
         if (food.IsPlayerFood())
         {
-            GameManager.instance.pause(true);
+            GameManager.instance.gameOver();
             //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
         }
 
@@ -39,7 +39,7 @@ public class StrongerGreenFish : Fish
 
     protected override void OnPlayerTirgger()
     {
-        GameManager.instance.pause(true);
+        GameManager.instance.gameOver();
         //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
     }
 }

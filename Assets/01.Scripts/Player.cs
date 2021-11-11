@@ -53,6 +53,11 @@ public class Player : MonoBehaviour
             isPaused = pause;
         };
 
+        GameManager.instance.gameOver += () =>
+        {
+            gameObject.SetActive(false);
+        };
+
         //화면이 눌렸을 때 실행될 함수를 등록해준다
         InputManager.instance.onClick += () =>
         {

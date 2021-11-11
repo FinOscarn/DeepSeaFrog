@@ -20,6 +20,8 @@ public class FishManager : MonoBehaviour
     public readonly float leftSpawnX = -3.4f; //물고기가 왼쪽에서 스폰될 때의 좌표
     public readonly float rightSpawnX = 3.4f; //물고기가 오른쪽에서 스폰될 때의 좌표
 
+    private bool isGameOver = false;
+
     private Transform player; //플레이어의 트렌스폼
 
     private Coroutine co; //물고기를 생성하는 코루틴
@@ -65,6 +67,11 @@ public class FishManager : MonoBehaviour
             {   //물고기를 생성하는 코루틴을 시작해줌과 동시에 변수에 담아둔다
                 co = StartCoroutine(CreateFishRoutine());
             }
+        };
+
+        GameManager.instance.gameOver += () =>
+        {
+            isGameOver = true;
         };
     }
 
@@ -127,7 +134,7 @@ public class FishManager : MonoBehaviour
     private IEnumerator CreateFishRoutine()
     {
         //만약 게임오버가 아니라면
-        while (!GameManager.instance.isGameOver)
+        while (!isGameOver)
         {
             //랜덤으로 bool값을 뽑는다
             bool randBool = (Random.value > 0.5f);

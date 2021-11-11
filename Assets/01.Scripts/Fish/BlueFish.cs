@@ -79,8 +79,7 @@ public class BlueFish : Fish
     {
         if (food.IsPlayerFood())
         {
-            GameManager.instance.pause(true);
-            //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
+            GameManager.instance.gameOver();
         }
 
         //내가 목표로 하고 있는 먹이일때만 충돌체크를 해준다
