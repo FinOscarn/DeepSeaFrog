@@ -98,6 +98,8 @@ public class UIManager : MonoBehaviour
         title.blocksRaycasts = true;
         title.interactable = true;
         currentScore.gameObject.SetActive(false);
+
+        GameManager.instance.reset();
     }
 
     // 클릭시 사운드 아이콘과 사운드 재생을 해주는 함수 Clear
