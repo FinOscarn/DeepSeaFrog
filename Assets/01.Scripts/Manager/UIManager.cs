@@ -49,6 +49,8 @@ public class UIManager : MonoBehaviour
 
         //게임오버를 구독한다
         GameManager.instance.gameOver += GameOver;
+        //리스타트를 구독
+        GameManager.instance.reStart += Restart;
     }
 
 

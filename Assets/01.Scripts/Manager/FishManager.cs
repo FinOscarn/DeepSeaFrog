@@ -73,6 +73,17 @@ public class FishManager : MonoBehaviour
         {
             isGameOver = true;
         };
+
+        GameManager.instance.reStart += () =>
+        {
+            isGameOver = false;
+            FishPoolManager.instance.DisableAll();
+
+            PoolManager.DisableAll<BlueFish>();
+
+            PoolManager.DisableAll<Soil>();
+            PoolManager.DisableAll<Mark>();
+        };
     }
 
     /// <summary>

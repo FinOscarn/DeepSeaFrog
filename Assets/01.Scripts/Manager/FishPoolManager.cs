@@ -52,4 +52,16 @@ public class FishPoolManager : MonoBehaviour
                 return null;
         }
     }
+
+    public void DisableAll()
+    {
+        PoolManager.DisableAll<GreenFish>();
+        PoolManager.DisableAll<OrangeFish>();
+        PoolManager.DisableAll<PurpleFish>();
+        PoolManager.DisableAll<GrayFish>();
+        PoolManager.DisableAll<RedFish>();
+        PoolManager.DisableAll<SpikeFIsh>();
+        PoolManager.DisableAll<BoneFish>();
+        PoolManager.DisableAll<StrongerGreenFish>();
+    }
 }

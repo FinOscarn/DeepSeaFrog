@@ -40,4 +40,12 @@ public class ObjectPool<T> : IPool where T : MonoBehaviour
         m_queue.Enqueue(t);
         return t;
     }
+
+    public void DisableAll()
+    {
+        foreach (var item in m_queue)
+        {
+            item.gameObject.SetActive(false);
+        }
+    }
 }

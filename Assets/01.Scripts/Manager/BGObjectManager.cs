@@ -61,6 +61,12 @@ public class BGObjectManager : MonoBehaviour
         {
             isGameOver = true;
         };
+
+        GameManager.instance.reStart += () =>
+        {
+            isGameOver = false;
+            PoolManager.DisableAll<BGObject>();
+        };
     }
 
     /// <summary>

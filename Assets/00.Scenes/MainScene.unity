@@ -334,10 +334,10 @@ MonoBehaviour:
   stopPanel: {fileID: 1507778163}
   exitButton: {fileID: 1460656986}
   titleText: {fileID: 1078762736}
-  scoreText: {fileID: 426438397}
   touchToStartText: {fileID: 943441691}
-  highScore: {fileID: 0}
-  currentScore: {fileID: 0}
+  highScore: {fileID: 64208672}
+  currentScore: {fileID: 426438397}
+  finalScore: {fileID: 1302327364}
   audioSource: {fileID: 88539436}
   soundMute: {fileID: 967845796}
   muteIcon: {fileID: 21300000, guid: a760e88b3047c67469ae5dcae04a7a14, type: 3}
@@ -380,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &144648180
 RectTransform:
   m_ObjectHideFlags: 0
@@ -539,14 +539,14 @@ RectTransform:
   m_GameObject: {fileID: 151167563}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 10, z: 1}
+  m_LocalScale: {x: 0.5, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.2, y: 0}
+  m_AnchoredPosition: {x: 2.53, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &151167565
@@ -1037,10 +1037,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.5992749, y: -7.015863}
-      - {x: 2.6549585, y: 14.502729}
-      - {x: -2.6237352, y: 14.538743}
-      - {x: -2.7295678, y: -6.929873}
+    - - {x: 2.7720091, y: -7.2201834}
+      - {x: 2.868667, y: 14.148876}
+      - {x: -2.8764982, y: 14.121157}
+      - {x: -2.843407, y: -7.220085}
 --- !u!114 &426072225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1650,7 +1650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.078794, y: 6.9986925, z: -10}
+  m_LocalPosition: {x: 0, y: 7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 151167564}
@@ -3360,8 +3360,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773084126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.88, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.019, y: 9.88, z: 0}
+  m_LocalScale: {x: 0.9505, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -3379,6 +3379,7 @@ GameObject:
   - component: {fileID: 1808869172}
   - component: {fileID: 1808869173}
   - component: {fileID: 1808869174}
+  - component: {fileID: 1808869175}
   m_Layer: 0
   m_Name: Player
   m_TagString: PLAYER
@@ -3471,8 +3472,9 @@ MonoBehaviour:
   virSpeed: 1
   horSpeed: 3
   clingTimer: 0
-  maxTime: 3
+  deathTimer: 0
   food: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!58 &1808869173
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3510,6 +3512,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1808869175
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808869169}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9721e2378e0f87f4cb676397c1c9d63f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1851206811
 GameObject:
   m_ObjectHideFlags: 0

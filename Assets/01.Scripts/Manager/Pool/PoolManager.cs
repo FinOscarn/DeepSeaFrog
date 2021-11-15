@@ -21,4 +21,11 @@ public class PoolManager
         ObjectPool<T> pool = (ObjectPool<T>)poolDic[t.ToString()];
         return pool.GetOrCreate();
     }
+
+    public static void DisableAll<T>() where T : MonoBehaviour
+    {
+        Type t = typeof(T);
+        ObjectPool<T> pool = (ObjectPool<T>)poolDic[t.ToString()];
+        pool.DisableAll();
+    }
 }

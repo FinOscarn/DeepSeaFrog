@@ -49,6 +49,12 @@ public class FoodManager : MonoBehaviour
         {
             isGameOver = true;
         };
+
+        GameManager.instance.reStart += () =>
+        {
+            isGameOver = false;
+            PoolManager.DisableAll<Food>();
+        };
     }
 
     public Food GetFood(Vector3 pos)

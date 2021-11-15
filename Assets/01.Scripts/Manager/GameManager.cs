@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
 
     public int score = 0;
 
-    //게임 시작할때 
+    //게임 시작할때
     public Action startGame = () => { };
     //플레이어의 다이빙 모션이 끝났을 때
     public Action playerD2ve = () => { };
     //게임오버됐을떄
     public Action gameOver = () => { };
+    //게임이 다시시작됐을때
+    public Action reStart = () => { };
 
     //일시정지
     public Action<bool> pause = pause => { };

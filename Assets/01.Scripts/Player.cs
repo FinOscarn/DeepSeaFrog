@@ -11,8 +11,10 @@ public class Player : MonoBehaviour
     public bool isCling = false; //먹이에 붙어있는지
     public bool canMove = true; //좌우로 이동할 수 있는지
 
-    public const float MAX_X = 2.54f;
-    public const float MIN_X = -2.6f;
+    public const float MAX_X = 2.4f;
+    public const float MIN_X = -2.74f;
+
+    public readonly Vector2 ORGIN_POS = new Vector2(0, 7);
 
     public float upSpeed = 1f; //위로 이동하는 속도, 반대방향이니까 -를 붙여주자
     public float downSpeed = 1f; //아래로 떨어지는 속도
@@ -27,7 +29,15 @@ public class Player : MonoBehaviour
     public Food food = null; //현재 붙어있는 먹이
     public Action<Food> onCling = food => { }; //먹이에 붙었을 때
 
+    public Animator anim;
+
     private MoveDir moveDir; //플레이어의 이동방향
+
+    private void Awake()
+    {
+        //에니메이터 컴포넌트를 가져온다
+        anim = GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -48,6 +58,8 @@ public class Player : MonoBehaviour
                 //플레이어가 다이빙했다고 알려준다
                 GameManager.instance.playerD2ve();
                 isPaused = false;
+
+                anim.SetTrigger("isD2veEnd");
             });
         };
 
@@ -61,6 +73,13 @@ public class Player : MonoBehaviour
         GameManager.instance.gameOver += () =>
         {
             gameObject.SetActive(false);
+        };
+
+        GameManager.instance.reStart += () =>
+        {
+            anim.ResetTrigger("isD2veEnd");
+            transform.position = ORGIN_POS;
+            isPaused = true;
         };
 
         //화면이 눌렸을 때 실행될 함수를 등록해준다
@@ -169,6 +188,9 @@ public class Player : MonoBehaviour
     /// <param name="food">붙을 먹이</param>
     public void UniteFood(Food food)
     {
+        //애니메이션을 붙는 애니메이션으로 바꾼다
+        anim.SetBool("isHang", true);
+
         //붙어있는 상태를 true로 바꿔주고
         isCling = true;
         //먹이의 붙어있는 상태도 true로 바꿔준다
@@ -189,6 +211,9 @@ public class Player : MonoBehaviour
     /// <param name="food">떨어질 먹이</param>
     public void DisuniteFood(Food food)
     {
+        //애니메이션을 수영하는 애니메이션으로 바꾼다
+        anim.SetBool("isHang", false);
+
         //붙어있는 상태를 꺼주고
         isCling = false;
         //먹이도 붙어있지 않은 상태로 만들어준다
