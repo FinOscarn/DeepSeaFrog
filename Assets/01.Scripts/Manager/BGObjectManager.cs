@@ -65,6 +65,7 @@ public class BGObjectManager : MonoBehaviour
         GameManager.instance.reset += () =>
         {
             isGameOver = false;
+            StopCoroutine(co);
             PoolManager.DisableAll<BGObject>();
         };
     }

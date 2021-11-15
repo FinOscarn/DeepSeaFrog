@@ -77,6 +77,8 @@ public class FishManager : MonoBehaviour
         GameManager.instance.reset += () =>
         {
             isGameOver = false;
+            StopCoroutine(co);
+
             FishPoolManager.instance.DisableAll();
 
             PoolManager.DisableAll<BlueFish>();
