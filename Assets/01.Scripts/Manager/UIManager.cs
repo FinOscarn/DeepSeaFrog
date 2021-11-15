@@ -92,6 +92,10 @@ public class UIManager : MonoBehaviour
         stopPanel.interactable = false;
         stopPanel.blocksRaycasts = false;
 
+        gameOver.alpha = 0;
+        gameOver.interactable = false;
+        gameOver.blocksRaycasts = false;
+
         //inGame 패널 비활성화
         //inGame.interactable = false;
         //inGame.blocksRaycasts = false;
