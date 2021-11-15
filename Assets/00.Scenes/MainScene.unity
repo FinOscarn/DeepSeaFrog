@@ -332,12 +332,14 @@ MonoBehaviour:
   inGame: {fileID: 719898064}
   gameOver: {fileID: 144648184}
   stopPanel: {fileID: 1507778163}
-  exitButton: {fileID: 1460656986}
+  exitButton: {fileID: 1213682779}
   titleText: {fileID: 1078762736}
   touchToStartText: {fileID: 943441691}
   highScore: {fileID: 64208672}
+  overFinalScore: {fileID: 946528200}
+  overHighScore: {fileID: 937016569}
   currentScore: {fileID: 426438397}
-  finalScore: {fileID: 1302327364}
+  finalScore: {fileID: 946528200}
   audioSource: {fileID: 88539436}
   soundMute: {fileID: 967845796}
   muteIcon: {fileID: 21300000, guid: a760e88b3047c67469ae5dcae04a7a14, type: 3}
@@ -380,7 +382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &144648180
 RectTransform:
   m_ObjectHideFlags: 0
@@ -507,9 +509,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144648179}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &151167563
 GameObject:

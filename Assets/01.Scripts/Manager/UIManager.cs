@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour
     // 최고 점수
     public Text highScore;
 
+    public Text overFinalScore;
+    public Text overHighScore;
+
     // 인게임에서의 현재 점수
     public Text currentScore;
 
@@ -55,6 +58,7 @@ public class UIManager : MonoBehaviour
     {
         // 점수 연산
         currentScore.text = GameManager.instance.score.ToString();
+        highScore.text = GameManager.instance.highScore.ToString();
     }
 
 
@@ -88,7 +92,7 @@ public class UIManager : MonoBehaviour
         stopPanel.interactable = false;
         stopPanel.blocksRaycasts = false;
 
-        // inGame 패널 비활성화
+        //inGame 패널 비활성화
         //inGame.interactable = false;
         //inGame.blocksRaycasts = false;
         //StartCoroutine(CheckTime(inGame));
@@ -125,7 +129,7 @@ public class UIManager : MonoBehaviour
     // title 패널, 클릭 시 inGame 패널로 전환된다.
     public void TitlePanel()
     {
-        title.gameObject.SetActive(false);
+        title.alpha = 0;
         title.interactable = false;
         title.blocksRaycasts = false;
         StartCoroutine(CheckTime(title));
@@ -144,14 +148,18 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         //inGame.GetComponent<GameObject>().SetActive(false);
-        inGame.gameObject.SetActive(false);
+        inGame.alpha = 0;
         inGame.interactable = false;
         inGame.blocksRaycasts = false;
         StartCoroutine(CheckTime(inGame));
 
         //gameOver.GetComponent<GameObject>().SetActive(true);
-        gameOver.gameObject.SetActive(true);
-        //highScore
+        gameOver.alpha = 1;
+        gameOver.interactable = true;
+        gameOver.blocksRaycasts = true;
+
+        overFinalScore.text = GameManager.instance.score.ToString();
+        overHighScore.text = GameManager.instance.highScore.ToString();
         //currentScore
         
 
@@ -163,12 +171,27 @@ public class UIManager : MonoBehaviour
     // GameOver패널의 Restart버튼을 누른다면 사용되는 함수다.
     public void Restart()
     {
+
+        stopPanel.alpha = 0;
+        stopPanel.interactable = false;
+        stopPanel.blocksRaycasts = false;
+
+        exitButton.alpha = 1;
+        exitButton.interactable = true;
+        exitButton.blocksRaycasts = true;
+
+        inGame.alpha = 1;
+        inGame.interactable = true;
+        inGame.blocksRaycasts = true;
+
+        gameOver.alpha = 0;
         gameOver.interactable = false;
         gameOver.blocksRaycasts = false;
-        //StartCoroutine(CheckTime(gameOver));
 
         GameManager.instance.reset();
         GameManager.instance.startGame();
+
+       
 
         // 먹이 이동 시작
         // 플레이어 생성
