@@ -41,6 +41,11 @@ public class UIManager : MonoBehaviour
 
     bool change = false;
 
+    public Sprite[] tutorialSprites;
+    public int tutorialIdx = 0;
+    public Image tutorialImage;
+    public CanvasGroup cvsTutorial;
+
     [TextArea]
     public string text;
 
@@ -65,6 +70,31 @@ public class UIManager : MonoBehaviour
 
 
 
+
+    public void StartTutorial()
+    {
+        tutorialIdx = 0;
+        cvsTutorial.alpha = 1;
+        tutorialImage.sprite = tutorialSprites[tutorialIdx];
+        cvsTutorial.interactable = true;
+        cvsTutorial.blocksRaycasts = true;
+    }
+
+    public void NextTutorial()
+    {
+        if(tutorialIdx >= 4)
+        {
+            cvsTutorial.alpha = 0;
+
+            cvsTutorial.interactable = false;
+            cvsTutorial.blocksRaycasts = false;
+        }
+        else
+        {
+            tutorialIdx += 1;
+            tutorialImage.sprite = tutorialSprites[tutorialIdx];
+        }
+    }
 
     // inGame패널의 Stop 버튼을 누를 시 실행되는 함수, Stop 패널로 전환한다. Clear
     public void StopGame()
