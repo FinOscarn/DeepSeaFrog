@@ -7,6 +7,8 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public Image[] tutorialImages;
+
     public CanvasGroup title;
     public CanvasGroup inGame;
     public CanvasGroup gameOver;
@@ -60,6 +62,8 @@ public class UIManager : MonoBehaviour
         currentScore.text = $"Score\n{GameManager.instance.score}";
         highScore.text = $"HighScore\n{GameManager.instance.highScore}";
     }
+
+
 
 
     // inGame패널의 Stop 버튼을 누를 시 실행되는 함수, Stop 패널로 전환한다. Clear
@@ -138,6 +142,13 @@ public class UIManager : MonoBehaviour
         title.blocksRaycasts = false;
         StartCoroutine(CheckTime(title));
 
+        gameOver.alpha = 0;
+        gameOver.interactable = false;
+        gameOver.blocksRaycasts = false;
+
+        inGame.alpha = 1;
+        inGame.interactable = true;
+        inGame.blocksRaycasts = true;
 
         // 게임시작
         GameManager.instance.startGame();
