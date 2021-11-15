@@ -30,7 +30,7 @@ public class BoneFish : Fish
     {
         if (food.IsPlayerFood())
         {
-            GameManager.instance.gameOver();
+            GameManager.instance.gameover();
             //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
         }
 

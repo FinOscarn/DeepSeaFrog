@@ -79,7 +79,7 @@ public class BlueFish : Fish
     {
         if (food.IsPlayerFood())
         {
-            GameManager.instance.gameOver();
+            GameManager.instance.gameover();
         }
 
         //내가 목표로 하고 있는 먹이일때만 충돌체크를 해준다

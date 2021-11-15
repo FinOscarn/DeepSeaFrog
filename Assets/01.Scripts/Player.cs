@@ -70,13 +70,14 @@ public class Player : MonoBehaviour
             isPaused = pause;
         };
 
-        GameManager.instance.gameOver += () =>
+        GameManager.instance.gameover += () =>
         {
             gameObject.SetActive(false);
         };
 
-        GameManager.instance.reStart += () =>
+        GameManager.instance.reset += () =>
         {
+            gameObject.SetActive(true);
             anim.ResetTrigger("isD2veEnd");
             transform.position = ORGIN_POS;
             isPaused = true;
@@ -164,7 +165,7 @@ public class Player : MonoBehaviour
         if (deathTimer >= MAX_TIME)
         {
             //죽인다.
-            GameManager.instance.gameOver();
+            GameManager.instance.gameover();
         }
 
         //점수 업데이트

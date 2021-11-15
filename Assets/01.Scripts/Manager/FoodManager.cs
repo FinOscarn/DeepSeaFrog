@@ -45,12 +45,12 @@ public class FoodManager : MonoBehaviour
             }
         };
 
-        GameManager.instance.gameOver += () =>
+        GameManager.instance.gameover += () =>
         {
             isGameOver = true;
         };
 
-        GameManager.instance.reStart += () =>
+        GameManager.instance.reset += () =>
         {
             isGameOver = false;
             PoolManager.DisableAll<Food>();

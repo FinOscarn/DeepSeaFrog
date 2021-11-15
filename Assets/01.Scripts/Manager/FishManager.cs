@@ -69,12 +69,12 @@ public class FishManager : MonoBehaviour
             }
         };
 
-        GameManager.instance.gameOver += () =>
+        GameManager.instance.gameover += () =>
         {
             isGameOver = true;
         };
 
-        GameManager.instance.reStart += () =>
+        GameManager.instance.reset += () =>
         {
             isGameOver = false;
             FishPoolManager.instance.DisableAll();

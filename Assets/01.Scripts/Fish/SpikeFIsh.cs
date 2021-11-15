@@ -29,7 +29,7 @@ public class SpikeFIsh : Fish
     {
         if (food.IsPlayerFood())
         {
-            GameManager.instance.gameOver();
+            GameManager.instance.gameover();
             //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
         }
 
@@ -41,7 +41,7 @@ public class SpikeFIsh : Fish
 
     protected override void OnPlayerTirgger()
     {
-        GameManager.instance.gameOver();
+        GameManager.instance.gameover();
         //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
     }
 }
