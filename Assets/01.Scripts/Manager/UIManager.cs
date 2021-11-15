@@ -57,8 +57,8 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // 점수 연산
-        currentScore.text = GameManager.instance.score.ToString();
-        highScore.text = GameManager.instance.highScore.ToString();
+        currentScore.text = $"Score\n{GameManager.instance.score}";
+        highScore.text = $"HighScore\n{GameManager.instance.highScore}";
     }
 
 
@@ -162,8 +162,8 @@ public class UIManager : MonoBehaviour
         gameOver.interactable = true;
         gameOver.blocksRaycasts = true;
 
-        overFinalScore.text = GameManager.instance.score.ToString();
-        overHighScore.text = GameManager.instance.highScore.ToString();
+        overFinalScore.text = $"Score\n{GameManager.instance.score}";
+        overHighScore.text = $"{GameManager.instance.highScore}";
         //currentScore
         
 
