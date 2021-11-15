@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public const float MAX_X = 2.4f;
     public const float MIN_X = -2.74f;
 
-    public readonly Vector2 ORGIN_POS = new Vector2(0, 7);
+    public readonly Vector3 ORGIN_POS = new Vector3(0, 7, 0);
 
     public float upSpeed = 1f; //위로 이동하는 속도, 반대방향이니까 -를 붙여주자
     public float downSpeed = 1f; //아래로 떨어지는 속도
@@ -77,6 +77,9 @@ public class Player : MonoBehaviour
 
         GameManager.instance.reset += () =>
         {
+            deathTimer = 0f;
+            clingTimer = 0f;
+
             gameObject.SetActive(true);
             anim.ResetTrigger("isD2veEnd");
             transform.position = ORGIN_POS;
@@ -169,7 +172,7 @@ public class Player : MonoBehaviour
         }
 
         //점수 업데이트
-        GameManager.instance.UpdateScore(-(int)(transform.position.y * 10));
+        GameManager.instance.UpdateScore(Mathf.Clamp(-(int)(transform.position.y * 10), 0, int.MaxValue));
     }
 
     /// <summary>

@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         reset += () =>
         {
             score = 0;
+            StopAllCoroutines();
         };
     }
 
