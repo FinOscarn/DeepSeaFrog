@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
 
         GameManager.instance.gameover += () =>
         {
+            particle.Stop();
             gameObject.SetActive(false);
         };
 
@@ -82,8 +83,6 @@ public class Player : MonoBehaviour
         {
             deathTimer = 0f;
             clingTimer = 0f;
-
-            particle.Stop();
 
             gameObject.SetActive(true);
             anim.ResetTrigger("isD2veEnd");
