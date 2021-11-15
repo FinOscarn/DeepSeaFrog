@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     public Action<Food> onCling = food => { }; //먹이에 붙었을 때
 
     public Animator anim;
+    public ParticleSystem particle;
 
     private MoveDir moveDir; //플레이어의 이동방향
 
@@ -60,6 +61,8 @@ public class Player : MonoBehaviour
                 isPaused = false;
 
                 anim.SetTrigger("isD2veEnd");
+
+                particle.Play();
             });
         };
 
@@ -79,6 +82,8 @@ public class Player : MonoBehaviour
         {
             deathTimer = 0f;
             clingTimer = 0f;
+
+            particle.Stop();
 
             gameObject.SetActive(true);
             anim.ResetTrigger("isD2veEnd");

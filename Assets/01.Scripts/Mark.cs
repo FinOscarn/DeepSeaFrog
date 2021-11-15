@@ -10,6 +10,8 @@ public class Mark : MonoBehaviour
     {
         if (targetTrm == null) return;
 
+        if (!targetTrm.gameObject.activeSelf) Disable();
+
         transform.position = targetTrm.position;
     }
 

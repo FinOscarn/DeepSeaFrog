@@ -53,6 +53,7 @@ public class FoodManager : MonoBehaviour
         GameManager.instance.reset += () =>
         {
             isGameOver = false;
+            StopCoroutine(co);
             PoolManager.DisableAll<Food>();
         };
     }
