@@ -162,7 +162,7 @@ public class UIManager : MonoBehaviour
     }
 
     // 클릭시 사운드 아이콘과 사운드 재생을 해주는 함수 Clear
-    public void SoundChange(Image a)
+    public void SoundChange()
     {
         if (!change)
         {
