@@ -41,8 +41,7 @@ public class UIManager : MonoBehaviour
     public Sprite muteIcon;
     public Sprite onIcon;
 
-    bool change = true;
-    bool change1 = false;
+    bool change = false;
 
     bool canPause = false;
 
