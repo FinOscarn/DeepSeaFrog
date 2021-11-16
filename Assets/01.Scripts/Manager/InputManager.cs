@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum MoveDir
 {
@@ -12,6 +13,9 @@ public enum MoveDir
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
+
+    public Button left;
+    public Button right;
 
     private const int center = 535; //가운데 X 지점
     private Vector2 inputPos; //입력받은 위치값
@@ -28,27 +32,43 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        left.onClick.AddListener(() => 
+        {
+            moveDir = MoveDir.Left;
+            onClick();
+        });
+
+        right.onClick.AddListener(() =>
+        {
+            moveDir = MoveDir.Right;
+            onClick();
+        });
+    }
+
     public static MoveDir GetDir()
     {
         return instance.moveDir;
     }
 
-    private void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            inputPos = Input.mousePosition;
+    //버튼 두개를 사용해서 일시정지 버튼이 눌려도 떨어지지 않게 바꾸자
+    //private void Update()
+    //{
+    //    if(Input.GetMouseButtonDown(0))
+    //    {
+    //        inputPos = Input.mousePosition;
             
-            if(inputPos.x >= center)
-            {
-                moveDir = MoveDir.Right;
-            }
-            else
-            {
-                moveDir = MoveDir.Left;
-            }
+    //        if(inputPos.x >= center)
+    //        {
+    //            moveDir = MoveDir.Right;
+    //        }
+    //        else
+    //        {
+    //            moveDir = MoveDir.Left;
+    //        }
 
-            onClick();
-        }
-    }
+    //        onClick();
+    //    }
+    //}
 }

@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
             seq.AppendCallback(() =>
             {
                 //플레이어 위치에 먹이 생성
-                Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
                 GameManager.instance.foodManager.GetFood(pos);
 
                 //플레이어가 다이빙했다고 알려준다

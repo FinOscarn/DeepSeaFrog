@@ -18,7 +18,7 @@ public class Soil : Food
     {
         if(collision.CompareTag(PLAYER_TAG))
         {
-            GameManager.instance.pause(true);
+            GameManager.instance.gameover();
         }
     }
 }
