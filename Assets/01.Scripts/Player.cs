@@ -76,7 +76,8 @@ public class Player : MonoBehaviour
         GameManager.instance.gameover += () =>
         {
             particle.Stop();
-            gameObject.SetActive(false);
+            //Invoke("Disable", 1f);
+            Disable();
         };
 
         GameManager.instance.reset += () =>
@@ -240,5 +241,10 @@ public class Player : MonoBehaviour
 
         //붙어있던 시간도 초기화해준다
         clingTimer = 0f;
+    }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
     }
 }
