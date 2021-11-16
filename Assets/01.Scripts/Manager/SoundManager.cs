@@ -11,6 +11,11 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource audioSource;
 
+    public AudioSource soundEffect;
+
+    public AudioClip d2veSound;
+    public AudioClip eatSound;
+
     UIManager uiManager;
     // Start is called before the first frame update
 
@@ -18,6 +23,20 @@ public class SoundManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         uiManager = GetComponent<UIManager>();
+
+        soundEffect.clip = d2veSound;
+
+        GameManager.instance.playerD2ve += () =>
+        {
+            soundEffect.clip = d2veSound;
+            soundEffect.Play();
+        };
+
+        GameManager.instance.gameover += () =>
+        {
+            soundEffect.clip = eatSound;
+            soundEffect.Play();
+        };
     }
 
     public void SoundChange()
