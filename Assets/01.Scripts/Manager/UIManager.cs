@@ -68,9 +68,6 @@ public class UIManager : MonoBehaviour
         highScore.text = $"HighScore\n{GameManager.instance.highScore}";
     }
 
-
-
-
     public void StartTutorial()
     {
         tutorialIdx = 0;
@@ -105,7 +102,7 @@ public class UIManager : MonoBehaviour
         stopPanel.alpha = 1;
         stopPanel.interactable = true;
         stopPanel.blocksRaycasts = true;
-        exitButton.alpha = 0;
+        exitButton.alpha = 1;
         
     }
     public void ResumeGame()
