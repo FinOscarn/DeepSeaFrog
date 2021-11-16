@@ -87,13 +87,17 @@ public class Player : MonoBehaviour
 
             gameObject.SetActive(true);
             anim.ResetTrigger("isD2veEnd");
-            transform.position = ORGIN_POS;
+
             isPaused = true;
 
             isCling = false;
             food = null;
 
             canMove = true;
+
+            particle.Stop();
+
+            transform.position = ORGIN_POS;
         };
 
         //화면이 눌렸을 때 실행될 함수를 등록해준다
