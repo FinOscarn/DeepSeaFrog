@@ -167,13 +167,15 @@ public class UIManager : MonoBehaviour
         if (!change)
         {
             audioSource.volume = 0;
-            a.sprite = muteIcon;
             change = true;
+            soundMute.sprite = muteIcon;
+            soundMute1.sprite = muteIcon;
         }
         else if (change)
         {
             audioSource.volume = 1;
-            a.sprite = onIcon;
+            soundMute.sprite = onIcon;
+            soundMute1.sprite = onIcon;
             change = false;
         }
         else
