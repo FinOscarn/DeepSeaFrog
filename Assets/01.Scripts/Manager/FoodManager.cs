@@ -37,7 +37,10 @@ public class FoodManager : MonoBehaviour
         {
             if (pause)
             {
-                StopCoroutine(co);
+                if(co != null)
+                {
+                    StopCoroutine(co);
+                }
             }
             else
             {

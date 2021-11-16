@@ -203,7 +203,6 @@ public class UIManager : MonoBehaviour
         overFinalScore.text = $"Score\n{GameManager.instance.score}";
         overHighScore.text = $"{GameManager.instance.highScore}";
         //currentScore
-        
 
         // 플레이어 비활
         // 점수 비활

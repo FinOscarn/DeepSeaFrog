@@ -48,7 +48,10 @@ public class BGObjectManager : MonoBehaviour
             if(pause)
             {
                 //실행중이던 코루틴을 멈춰준다
-                StopCoroutine(co);
+                if (co != null)
+                {
+                    StopCoroutine(co);
+                }
             }
             else
             {

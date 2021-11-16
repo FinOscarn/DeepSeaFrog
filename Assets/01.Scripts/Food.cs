@@ -65,6 +65,10 @@ public class Food : MonoBehaviour
     /// <param name="pos">초기 위치값</param>
     public void Init(Vector3 pos)
     {
+        isPaused = false;
+        isCling = false;
+        moveSpeed = originSpeed;
+
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         transform.position = pos;
     }

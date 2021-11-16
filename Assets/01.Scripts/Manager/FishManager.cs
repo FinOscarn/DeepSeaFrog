@@ -61,7 +61,10 @@ public class FishManager : MonoBehaviour
             if (pause)
             {
                 //물고기가 생성되는 코루틴을 멈취준다
-                StopCoroutine(co);
+                if (co != null)
+                {
+                    StopCoroutine(co);
+                }
             }
             else
             {   //물고기를 생성하는 코루틴을 시작해줌과 동시에 변수에 담아둔다

@@ -76,7 +76,8 @@ public class Player : MonoBehaviour
         GameManager.instance.gameover += () =>
         {
             particle.Stop();
-            gameObject.SetActive(false);
+            //Invoke("Disable", 1f);
+            Disable();
         };
 
         GameManager.instance.reset += () =>
@@ -86,13 +87,17 @@ public class Player : MonoBehaviour
 
             gameObject.SetActive(true);
             anim.ResetTrigger("isD2veEnd");
-            transform.position = ORGIN_POS;
+
             isPaused = true;
 
             isCling = false;
             food = null;
 
             canMove = true;
+
+            particle.Stop();
+
+            transform.position = ORGIN_POS;
         };
 
         //화면이 눌렸을 때 실행될 함수를 등록해준다
@@ -240,5 +245,10 @@ public class Player : MonoBehaviour
 
         //붙어있던 시간도 초기화해준다
         clingTimer = 0f;
+    }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
     }
 }
