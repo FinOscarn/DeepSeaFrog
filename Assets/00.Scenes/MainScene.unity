@@ -2336,10 +2336,10 @@ MonoBehaviour:
       - m_Target: {fileID: 88539437}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: SoundChange
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 967845796}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3723,11 +3723,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 88539437}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SoundChange1
-        m_Mode: 1
+        m_MethodName: SoundChange
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1480901187}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

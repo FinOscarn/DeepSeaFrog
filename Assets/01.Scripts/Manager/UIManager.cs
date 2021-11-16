@@ -162,18 +162,18 @@ public class UIManager : MonoBehaviour
     }
 
     // 클릭시 사운드 아이콘과 사운드 재생을 해주는 함수 Clear
-    public void SoundChange()
+    public void SoundChange(Image a)
     {
         if (!change)
         {
             audioSource.volume = 0;
-            soundMute.sprite = muteIcon;
+            a.sprite = muteIcon;
             change = true;
         }
         else if (change)
         {
             audioSource.volume = 1;
-            soundMute.sprite = onIcon;
+            a.sprite = onIcon;
             change = false;
         }
         else
