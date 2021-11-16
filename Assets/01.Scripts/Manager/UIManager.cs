@@ -41,6 +41,8 @@ public class UIManager : MonoBehaviour
 
     bool change = false;
 
+    bool canPause = false;
+
     public Sprite[] tutorialSprites;
     public int tutorialIdx = 0;
     public Image tutorialImage;
@@ -59,6 +61,16 @@ public class UIManager : MonoBehaviour
 
         //게임오버를 구독한다
         GameManager.instance.gameover += GameOver;
+
+        GameManager.instance.playerD2ve += () =>
+        {
+            canPause = true;
+        };
+
+        GameManager.instance.reset += () =>
+        {
+            canPause = false;
+        };
     }
 
     void Update()
@@ -96,6 +108,8 @@ public class UIManager : MonoBehaviour
     // inGame패널의 Stop 버튼을 누를 시 실행되는 함수, Stop 패널로 전환한다. Clear
     public void StopGame()
     {
+        if (!canPause) return;
+
         // 플레이어 고정
         GameManager.instance.pause(true);
 

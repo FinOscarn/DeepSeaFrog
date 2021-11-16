@@ -26,6 +26,11 @@ public class GrayFish : Fish
 
     protected override void OnFoodTrigger(Food food)
     {
+        if (food.IsPlayerFood())
+        {
+            player.DisuniteFood(food);
+        }
+
         food.Disable();
 
         base.OnFoodTrigger(food);
