@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     private Camera cam;
 
     public Image soundMute;
+    public Image soundMute1;
     public Image soundMuteTitle;
   
     public Sprite muteIcon;
@@ -174,6 +175,23 @@ public class UIManager : MonoBehaviour
         {
             audioSource.volume = 1;
             soundMute.sprite = onIcon;
+            change = false;
+        }
+        else
+            return;
+    }
+    public void SoundChange1()
+    {
+        if (!change)
+        {
+            audioSource.volume = 0;
+            soundMute1.sprite = muteIcon;
+            change = true;
+        }
+        else if (change)
+        {
+            audioSource.volume = 1;
+            soundMute1.sprite = onIcon;
             change = false;
         }
         else
