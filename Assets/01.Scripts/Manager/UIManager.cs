@@ -35,11 +35,13 @@ public class UIManager : MonoBehaviour
     private Camera cam;
 
     public Image soundMute;
+    public Image soundMuteTitle;
   
     public Sprite muteIcon;
     public Sprite onIcon;
 
-    bool change = false;
+    bool change = true;
+    bool change1 = false;
 
     bool canPause = false;
 
@@ -58,6 +60,8 @@ public class UIManager : MonoBehaviour
         audioSource = gameObject.GetComponent<AudioSource>();
         //titleText.DOText(text, 2f);
         StartCoroutine(ShowReady());
+
+        audioSource.Play();
 
         //게임오버를 구독한다
         GameManager.instance.gameover += GameOver;
@@ -132,6 +136,7 @@ public class UIManager : MonoBehaviour
     // Stop 패널의 title 버튼을 누르면 타이틀 패널로 전환되는 함수
     public void GoTitle()
     {
+
         // stop 패널 비활성화
         stopPanel.alpha = 0;
         stopPanel.interactable = false;
@@ -153,6 +158,7 @@ public class UIManager : MonoBehaviour
         currentScore.gameObject.SetActive(false);
 
         GameManager.instance.reset();
+
     }
 
     // 클릭시 사운드 아이콘과 사운드 재생을 해주는 함수 Clear
@@ -160,14 +166,13 @@ public class UIManager : MonoBehaviour
     {
         if (!change)
         {
-            audioSource.Stop();
+            audioSource.volume = 0;
             soundMute.sprite = muteIcon;
             change = true;
-            audioSource.Stop();
         }
         else if (change)
         {
-            audioSource.Play();
+            audioSource.volume = 1;
             soundMute.sprite = onIcon;
             change = false;
         }
@@ -178,6 +183,8 @@ public class UIManager : MonoBehaviour
     // title 패널, 클릭 시 inGame 패널로 전환된다.
     public void TitlePanel()
     {
+        //SoundChange();
+
         title.alpha = 0;
         title.interactable = false;
         title.blocksRaycasts = false;
@@ -194,10 +201,8 @@ public class UIManager : MonoBehaviour
         // 게임시작
         GameManager.instance.startGame();
 
-        audioSource.Play();
         currentScore.gameObject.SetActive(true); // 점수 구현
         // 먹이 구현
-
     }
 
     // 플레이어가 패배한다면, 사용되는 함수, GameOver패널로 전환된다.
