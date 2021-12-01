@@ -42,6 +42,7 @@ public class BGObjectManager : MonoBehaviour
             co = StartCoroutine(CreateBGObject());
         };
 
+        //게임이 일시정지되었을 떄 실행할 함수를 담아둔다
         GameManager.instance.pause += pause =>
         {
             //만약 일시정지라면
@@ -60,15 +61,21 @@ public class BGObjectManager : MonoBehaviour
             }
         };
 
+        //게임오버되었을 때 실행할 함수를 등록해준다
         GameManager.instance.gameover += () =>
         {
+            //게임오버를 켜준다
             isGameOver = true;
         };
 
+        //게임이 리셋되었을 떄 실행할 함수를 등록해준다
         GameManager.instance.reset += () =>
         {
+            //게임오버를 꺼준다
             isGameOver = false;
+            //실행중인 코루틴을 멈춰준다
             StopCoroutine(co);
+            //모든 배경오브젝트를 꺼준다
             PoolManager.DisableAll<BGObject>();
         };
     }

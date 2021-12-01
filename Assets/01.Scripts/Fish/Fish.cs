@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//물고기 종류 enum
 public enum FishType
 {
     Green = 0,
@@ -65,23 +66,32 @@ public abstract class Fish : MonoBehaviour
         //만약 일시정지상태라면 리턴
         if (isPaused) return;
 
+        //만약 왼쪽으로 향한다면
         if (isLeftMove)
         {
+            //위치를 계속 왼쪽으로 이동시킨다
             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+            //위치를 계속 아래로 이동시킨다
             transform.Translate(Vector2.down * downSpeed * Time.deltaTime);
 
+            //만약 최소 X값보다 작다면
             if (transform.position.x <= MIN_X)
             {
+                //비활성화시킨다
                 gameObject.SetActive(false);
             }
         }
         else
         {
+            //위치를 계속 오른쪽으로 이동시킨다
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+            //위치를 계속 아래로 이동시킨다
             transform.Translate(Vector2.down * downSpeed * Time.deltaTime);
 
+            //만약 최대 X값보다 크다면
             if (transform.position.x >= MAX_X)
             {
+                //비활성화시킨다
                 gameObject.SetActive(false);
             }
         }
@@ -89,11 +99,13 @@ public abstract class Fish : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        //먹은 갯수를 초기화해준다
         eatCnt = 0;
     }
 
     public void FlipSprite(bool isLeftMove)
     {
+        //어디로 이동할지에 따라서 스프라이트를 반전시켜준다
         sr.flipX = isLeftMove;
     }
 
@@ -103,25 +115,32 @@ public abstract class Fish : MonoBehaviour
     /// <param name="position">초기 위치값</param>
     public void SetPosition(Vector3 position)
     {
+        //위치를 세팅해준다
         transform.position = position;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D col)
     {
+        //만약 최대로 먹을 수 있는 양보다 많이 먹으려 한다면
         if(eatCnt >= maxEatCnt)
         {
-            
+            //리턴해준다
             return;
         }
         else
         {
+            //만약 플레이어라면
             if (col.CompareTag(PLAYER_TAG))
             {
+                //플레이어가 닿았다고 알려준다
                 OnPlayerTirgger();
             }
+            //만약 먹이라면
             else if (col.CompareTag(FOOD_TAG))
             {
+                //닿은 먹이가 뭔지 가져온다
                 Food food = col.gameObject.GetComponent<Food>();
+                //먹이가 닿았다고 알려준다
                 OnFoodTrigger(food);
             }
         }
@@ -133,6 +152,7 @@ public abstract class Fish : MonoBehaviour
     /// <param name="food">충돌한 먹이</param>
     protected virtual void OnFoodTrigger(Food food)
     {
+        //먹은 갯수를 하나 늘린다
         eatCnt++;
     }
 

@@ -20,7 +20,7 @@ public class FishManager : MonoBehaviour
     public readonly float leftSpawnX = -3.4f; //물고기가 왼쪽에서 스폰될 때의 좌표
     public readonly float rightSpawnX = 3.4f; //물고기가 오른쪽에서 스폰될 때의 좌표
 
-    private bool isGameOver = false;
+    private bool isGameOver = false; //게임오버 여부
 
     private Transform player; //플레이어의 트렌스폼
 
@@ -72,21 +72,30 @@ public class FishManager : MonoBehaviour
             }
         };
 
+        //게임오버되었을 때 실행할 함수를 추가해준다
         GameManager.instance.gameover += () =>
         {
+            //게임오버를 켜준다
             isGameOver = true;
         };
 
+        //게임이 리셋될 때 실행할 함수를 추가해준다
         GameManager.instance.reset += () =>
         {
+            //게임오버를 꺼준다
             isGameOver = false;
+            //물고기를 생성하는 코루틴을 멈춰준다
             StopCoroutine(co);
 
+            //모든 물고기 오브젝트를 꺼준다
             FishPoolManager.instance.DisableAll();
 
+            //모든 파도고기 오브젝트를 꺼준다
             PoolManager.DisableAll<BlueFish>();
 
+            //모든 찌꺼기 오브젝트를 꺼준다
             PoolManager.DisableAll<Soil>();
+            //모든 마커 오브젝트를 꺼준다
             PoolManager.DisableAll<Mark>();
         };
     }

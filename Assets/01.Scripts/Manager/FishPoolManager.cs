@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FishPoolManager : MonoBehaviour
 {
+    //싱글톤 패턴을 위한 정적변수
     public static FishPoolManager instance;
 
     [SerializeField]
@@ -29,6 +30,7 @@ public class FishPoolManager : MonoBehaviour
 
     public Fish GetFish(FishType type)
     {
+        //물고기의 종류에 따라 다른 프리팹을 리턴해준다
         switch (type)
         {
             case FishType.Green:
@@ -55,6 +57,7 @@ public class FishPoolManager : MonoBehaviour
 
     public void DisableAll()
     {
+        //모든 물고기 게임오브젝트를 비활성화시킨다
         PoolManager.DisableAll<GreenFish>();
         PoolManager.DisableAll<OrangeFish>();
         PoolManager.DisableAll<PurpleFish>();

@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
     public Food food = null; //현재 붙어있는 먹이
     public Action<Food> onCling = food => { }; //먹이에 붙었을 때
 
-    public Animator anim;
-    public ParticleSystem particle;
+    public Animator anim; //에니메이터
+    public ParticleSystem particle; //파티클(거품)
 
     private MoveDir moveDir; //플레이어의 이동방향
 
@@ -60,8 +60,10 @@ public class Player : MonoBehaviour
                 GameManager.instance.playerD2ve();
                 isPaused = false;
 
+                //에니메이터의 트리거를 켜준다
                 anim.SetTrigger("isD2veEnd");
 
+                //파티클을 시작해준다
                 particle.Play();
             });
         };
@@ -73,30 +75,42 @@ public class Player : MonoBehaviour
             isPaused = pause;
         };
 
+        //게임오버되었을 때 실행할 함수를 등록해준다
         GameManager.instance.gameover += () =>
         {
+            //파티클을 멈춰준다
             particle.Stop();
             //Invoke("Disable", 1f);
+            //비활성화시킨다
             Disable();
         };
 
+        //게임이 리셋되었을 떄 실행할 함수를 등록해준다
         GameManager.instance.reset += () =>
         {
+            //타이머를 0으로 초기화해준다
             deathTimer = 0f;
             clingTimer = 0f;
 
+            //다시 활성화시켜준다
             gameObject.SetActive(true);
+            //에니메이터의 트리거를 꺼준다
             anim.ResetTrigger("isD2veEnd");
 
+            //멈춰있는 상태로 바꾼다
             isPaused = true;
 
+            //먹이와 떨어진 상태로 바꾼다
             isCling = false;
             food = null;
 
+            //움직일 수 있는 상태로 바꾼다
             canMove = true;
 
+            //파티클을 멈춰준다
             particle.Stop();
 
+            //위치를 초기화해준다
             transform.position = ORGIN_POS;
         };
 
@@ -123,10 +137,12 @@ public class Player : MonoBehaviour
         //좌우로 움직일 수 있는 최대 영역 제한
         if (transform.position.x <= MIN_X)
         {
+            //최솟값으로 위치를 고정해준다
             transform.position = new Vector2(MIN_X, transform.position.y);
         }
         if (transform.position.x >= MAX_X)
-        {
+        {   
+            //최댓값으로 위치를 고정해준다
             transform.position = new Vector2(MAX_X, transform.position.y);
         }
 
@@ -247,8 +263,12 @@ public class Player : MonoBehaviour
         clingTimer = 0f;
     }
 
+    /// <summary>
+    /// 플레이어를 비활성화해주는 함수입니다
+    /// </summary>
     public void Disable()
     {
+        //비활성화시켜준다
         gameObject.SetActive(false);
     }
 }

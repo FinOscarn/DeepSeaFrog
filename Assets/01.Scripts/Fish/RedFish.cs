@@ -26,20 +26,20 @@ public class RedFish : Fish
 
     protected override void OnFoodTrigger(Food food)
     {
+        //플레이어와 붙어있는 먹이라면
         if (food.IsPlayerFood())
         {
+            //게임오버를 호출해준다
             GameManager.instance.gameover();
-            //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
         }
 
+        //먹이를 비활성화시킨다
         food.Disable();
-
-        base.OnFoodTrigger(food);
     }
 
     protected override void OnPlayerTirgger()
     {
+        //게임오버를 호출해준다
         GameManager.instance.gameover();
-        //임시로 퍼즈를 걸어놨지만 나중엔 게임오버로 바꾸자
     }
 }

@@ -16,8 +16,10 @@ public class Soil : Food
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //만약 플레이어가 닿았다면
         if(collision.CompareTag(PLAYER_TAG))
         {
+            //게임오버를 호출해준다
             GameManager.instance.gameover();
         }
     }
